@@ -1,0 +1,114 @@
+/* Preloader */
+
+/* .preloader-overlay {
+    position: fixed;
+    background-color: rgba(255,255,255,1);
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+}
+
+.s-container {
+    height: 100%;
+    display: flex;
+}
+
+.preloader-container {
+    width: 300px;
+    height: 300px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-scroll {
+    overflow: hidden;
+} 
+*/
+
+/* Header */
+.logo {
+    max-width: 100px;
+}
+.site-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100px;
+    font-family: Montserrat;
+}
+/* General */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Playfair Display, 'serif'; 
+}
+
+h1 {
+    font-size: 24px;
+}
+
+body {
+    font-family: Work Sans, 'sans-serif';
+}
+
+footer p {
+    font-size: 14px;
+}
+/* Carousel Container */
+#carousel-home {
+    max-height: 450px;
+}
+
+#carousel-home img {
+    max-height: 450px;
+}
+
+/* Cart Containers */
+.cart-items {
+    position: fixed;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.8);
+    max-width: 280px;
+    color: black;
+    max-height: 400px;
+    min-height: 300px;
+    padding: 10px;
+    display: none;
+}
+
+/* Featured Products TESTING */
+.card {
+    background-color: rgba(255,255,255,0.8);
+    margin: 10px 4px;
+    transition: .6s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-block {
+     padding: 10px;
+  }
+  
+  .top-products {
+    background-color: #fff;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  ::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+      background: transparent;
+  }
+  
+  div.top-products .card {
+      display: inline-block;
+      padding: 14px;
+      text-decoration: none;
+      height: auto; 
+      width: 400px;
+      height: 350px;
+  }
+  
