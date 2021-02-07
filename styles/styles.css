@@ -55,11 +55,11 @@ footer p {
 }
 /* Carousel Container */
 #carousel-home {
-    max-height: 450px;
+    max-height: 420px;
 }
 
 #carousel-home img {
-    max-height: 450px;
+    max-height: 420px;
 }
 
 /* Cart Containers */
@@ -78,18 +78,18 @@ footer p {
 
 /* Featured Products TESTING */
 .card {
-    background-color: rgba(255,255,255,0.8);
-    margin: 10px 4px;
+    background-color: rgba(255, 255, 255,0.8);
+    margin: 15px 10px;
     transition: .6s ease;
   }
   
   .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
   
   .card-block {
-     padding: 10px;
-  }
+    padding: 12px;
+ }
   
   .top-products {
     background-color: #fff;
@@ -108,7 +108,12 @@ footer p {
       padding: 14px;
       text-decoration: none;
       height: auto; 
-      width: 400px;
-      height: 350px;
+      width: 350px;
+      height: 100%;
+  }
+
+  div.top-products img {
+      max-width: 350px;
+      max-height: 350px;
   }
   
