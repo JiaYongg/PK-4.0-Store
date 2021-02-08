@@ -114,14 +114,25 @@ footer p {
       text-decoration: none;
       height: auto; 
       width: 300px;
-      max-height: 350px;
+      max-height: 370px;
       text-align: center;
     }
 
   div.top-products img {
       margin: auto;
       text-align: center;
-      max-width: 150px;
-      max-height: 150px;
+      width: 150px;
+      height: 150px;
   }
+
+  /* About Section */
+#about {
+    background-color:#b3e0ff;
+    background-image: url('../images/about-img.jpg');
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size:initial;
+    width: 100vw;
+    height: 600px;
+}
   
