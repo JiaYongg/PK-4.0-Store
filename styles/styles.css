@@ -23,9 +23,13 @@
 
 .no-scroll {
     overflow: hidden;
-} 
-*/
-
+}  */
+#preloader{
+    max-width: 80%;
+    margin: 14% auto;
+    justify-content: center;
+    display: flex;
+}
 /* Header */
 .logo {
     max-width: 100px;
