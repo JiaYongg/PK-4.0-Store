@@ -32,11 +32,11 @@
 }
 /* Header */
 .logo {
-    max-width: 100px;
+    width: 100px;
 }
 .site-title {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.3em;
     line-height: 100px;
     font-family: Montserrat;
 }
@@ -71,10 +71,10 @@ footer p {
     position: fixed;
     right: 0;
     z-index: 999;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #F8F9FA;
     max-width: 280px;
     color: black;
-    max-height: 400px;
+    max-height: 350px;
     min-height: 300px;
     padding: 10px;
     display: none;
@@ -113,11 +113,12 @@ footer p {
       text-decoration: none;
       height: auto; 
       width: 350px;
-      height: 100%;
+      max-height: 450px;
   }
 
   div.top-products img {
+      margin: auto;
       max-width: 350px;
-      max-height: 350px;
+      max-height: 240px;
   }
   
