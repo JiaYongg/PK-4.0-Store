@@ -78,6 +78,7 @@ footer p {
     min-height: 300px;
     padding: 10px;
     display: none;
+    border-radius: 0px 0px 12px 12px;
 }
 
 /* Featured Products TESTING */
