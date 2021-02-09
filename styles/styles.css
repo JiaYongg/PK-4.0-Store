@@ -71,6 +71,26 @@ footer p {
     max-height: 420px;
 }
 
+/* Categories Grids */
+#jewelries-cat {
+    background-image: url('../images/jewelries-grid.jpg');
+    background-size: cover;
+    height: 450px;
+}
+
+#mens-clothing {
+    background-image: url('../images/mens-grid.jpg');
+    background-size: cover;
+    height: 225px;
+    margin-bottom: 10px;
+}
+
+#womens-clothing {
+    background-image: url('../images/womens-grid.jpg');
+    background-size: cover;
+    height: 225px;
+}
+
 /* Cart Containers */
 .cart-items {
     position: fixed;
@@ -145,6 +165,7 @@ footer p {
       height: 150px;
   }
   /* About Section */
+
 #about {
     background-color:#b3e0ff;
     width: 100vw;
