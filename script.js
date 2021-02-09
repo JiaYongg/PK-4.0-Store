@@ -17,9 +17,52 @@ $("#cart").hover(function() {
 })();
 
 
-
 /* API */
 /* YET TO IMPLEMENT */
-fetch('https://fakestoreapi.com/products?limit=5')
+function apiStore(){
+    fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
-    .then(json=>console.log(json))
+    .then(data=>loadData(data))
+    .catch(err => console.log(err.message));
+}
+
+function loadData(data){
+    let topProducts = document.getElementById("top-products");
+    let newArrivals = document.getElementById("new-arrivals");
+    console.log(data);
+    //Top Products API
+    topProducts.innerHTML = data
+    .map(topItem => {
+        if (topItem.id <= 5)
+        return`
+        <div class="card shadow">
+            <img class="card-img-top img-fluid" src="${topItem.image}">
+            <div class="card-block">
+                    <h5 class="card-title">${topItem.title}</h4>
+                    <p class="card-text">${topItem.description}</p>
+                    <p class="card-text"><big>$${topItem.price.toFixed(2)}</big></p>
+                    <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+            </div>
+        </div>
+        `             
+    }).join("");
+
+    //New Arrivals API 
+    newArrivals.innerHTML = data
+    .map(newItem => {
+        if (newItem.id >= 16)
+        return`
+        <div class="card shadow">
+            <img class="card-img-top img-fluid" src="${newItem.image}">
+            <div class="card-block">
+                    <h5 class="card-title">${newItem.title}</h4>
+                    <p class="card-text">${newItem.description}</p>
+                    <p class="card-text"><big>$${newItem.price.toFixed(2)}</big></p>
+                    <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+            </div>
+        </div>
+        `             
+    }).join("");
+}
+
+window.addEventListener("load", apiStore);
