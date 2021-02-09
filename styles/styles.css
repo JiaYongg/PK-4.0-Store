@@ -24,12 +24,14 @@
 .no-scroll {
     overflow: hidden;
 }  */
+
 #preloader{
     max-width: 80%;
     margin: 14% auto;
     justify-content: center;
     display: flex;
 }
+
 /* Header */
 .logo {
     width: 100px;
@@ -40,8 +42,11 @@
     line-height: 100px;
     font-family: Montserrat;
 }
+.navbar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
 /* General */
-
 h1, h2, h3, h4, h5, h6 {
     font-family: Playfair Display, 'serif'; 
 }
@@ -93,7 +98,7 @@ footer p {
   }
   
   .card-block {
-    padding: 12px;
+    padding: 10px;
  }
   
   .top-products {
@@ -110,12 +115,13 @@ footer p {
   
   div.top-products .card {
       display: inline-block;
-      padding: 14px;
+      padding: 8px;
       text-decoration: none;
       height: auto; 
-      width: 300px;
-      max-height: 370px;
+      width: 340px;
+      /* max-height: 370px; */
       text-align: center;
+      vertical-align: top;
     }
 
   div.top-products img {
@@ -125,6 +131,19 @@ footer p {
       height: 150px;
   }
 
+  div.top-products .card p, div.top-products .card h5 {
+      white-space: normal;
+  }
+
+  div.top-products .card h5 {
+      font-size: 16px;
+      height: 45px;
+  }
+
+  .product-desc {
+      font-size: 12px;
+      height: 150px;
+  }
   /* About Section */
 #about {
     background-color:#b3e0ff;

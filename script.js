@@ -30,6 +30,7 @@ function loadData(data){
     let topProducts = document.getElementById("top-products");
     let newArrivals = document.getElementById("new-arrivals");
     console.log(data);
+
     //Top Products API
     topProducts.innerHTML = data
     .map(topItem => {
@@ -39,8 +40,8 @@ function loadData(data){
             <img class="card-img-top img-fluid" src="${topItem.image}">
             <div class="card-block">
                     <h5 class="card-title">${topItem.title}</h4>
-                    <p class="card-text">${topItem.description}</p>
-                    <p class="card-text"><big>$${topItem.price.toFixed(2)}</big></p>
+                    <p class="card-text product-desc">${topItem.description}</p>
+                    <p class="card-text product-price"><big>$${topItem.price.toFixed(2)}</big></p>
                     <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
             </div>
         </div>
@@ -56,8 +57,8 @@ function loadData(data){
             <img class="card-img-top img-fluid" src="${newItem.image}">
             <div class="card-block">
                     <h5 class="card-title">${newItem.title}</h4>
-                    <p class="card-text">${newItem.description}</p>
-                    <p class="card-text"><big>$${newItem.price.toFixed(2)}</big></p>
+                    <p class="card-text product-desc">${newItem.description}</p>
+                    <p class="card-text product-price"><big>$${newItem.price.toFixed(2)}</big></p>
                     <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
             </div>
         </div>
