@@ -128,11 +128,6 @@ footer p {
   /* About Section */
 #about {
     background-color:#b3e0ff;
-    background-image: url('../images/about-img.jpg');
-    background-position: center right;
-    background-repeat: no-repeat;
-    background-size:initial;
     width: 100vw;
-    height: 600px;
+    min-height: 600px;
 }
-  
