@@ -66,6 +66,6 @@ function loadData(data){
     }).join("");
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
     window.addEventListener("load", apiStore);
-})
+// })
