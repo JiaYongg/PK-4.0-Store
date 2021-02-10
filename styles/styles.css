@@ -175,7 +175,17 @@ footer p {
 
 /* Game Button */
 #game_btn {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+#game_btn img {
+    width: 65px;
+    height: 65px;
+    opacity: 0.4;
+}
+
+#game_btn img:hover {
+    opacity: 1;
 }
