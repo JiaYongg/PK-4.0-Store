@@ -164,10 +164,18 @@ footer p {
       font-size: 12px;
       height: 150px;
   }
+
   /* About Section */
 
 #about {
     background-color:#b3e0ff;
     width: 100vw;
     min-height: 600px;
+}
+
+/* Game Button */
+#game_btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
