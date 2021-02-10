@@ -25,6 +25,10 @@
     overflow: hidden;
 }  */
 
+/* body {
+    overflow-x: hidden;
+} */
+
 #preloader{
     max-width: 80%;
     margin: 14% auto;
