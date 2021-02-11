@@ -212,5 +212,5 @@ footer p {
 .separator {
     display: block;
     width: 125px;
-    border-top: lightskyblue 
+    border-top: 8px solid lightskyblue;
 }
