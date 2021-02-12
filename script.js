@@ -16,9 +16,17 @@ $("#cart").hover(function() {
     });
 })();
 
+/* Wheel of Fortune Hover */
+(function(){
+$("#wheelImg").hover(function() {
+      $("#game-msg").fadeToggle("slow", 0.0);
+    });
+})();
+
+
+
 
 /* API */
-/* YET TO IMPLEMENT */
 function apiStore(){
     fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
