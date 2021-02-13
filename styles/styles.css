@@ -215,3 +215,7 @@ footer p {
     width: 125px;
     border-top: 8px solid lightskyblue;
 }
+
+#contact {
+    height: 600px;
+}

@@ -147,8 +147,8 @@
                 </article>
             </section>
 
-            <section class="container-fluid py-4" id="contact">
-                <article class="container d-flex align-items-center flex-wrap">
+            <section class="container-fluid py-4">
+                <article class="container d-flex align-items-center flex-wrap" id="contact">
                     <div class="col-lg-6 col-md-12 px-5">
                         <h2 class="pb-1">Contact Us</h2>
                         <hr class="separator"></hr>
@@ -170,53 +170,34 @@
                           </table>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <form>
-                            <div class="form-row d-flex">
-                              <div class="form-group col-lg-6 ">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <div class="form" id="contact-form-container">
+                            <form id="contact-form">
+                              <div class="form-row d-flex">
+                                <div class="form-group col-lg-6 col-6">
+                                  <label for="contact-name">Name</label>
+                                  <input type="text" id="contact-name" class="form-control" required>
+                                </div>
+                                <div class="form-group col-lg-6 col-6 mx-2">
+                                  <label for="contact-num">Contact Number</label>
+                                  <input type="tel" id="contact-num" class="form-control" required>
+                                </div>
                               </div>
-                              <div class="form-group col-lg-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                              <div class="form-row d-flex">
+                                <div class="form-group col-12">
+                                  <label for="contact-email">Email</label>
+                                  <input type="email" id="contact-email" class="form-control" required>
+                                  <small id="contact-email-help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
                               </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress">Address</label>
-                              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress2">Address 2</label>
-                              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity">
+                              <div class="form-row py-2">
+                                <div class="form-group col">
+                                  <label for="contact-msg">Message</label>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
                               </div>
-                              <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected>Choose...</option>
-                                  <option>...</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                  Check me out
-                                </label>
-                              </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                          </form>
-                    </div>
+                                <input type="submit" value="Send" class="btn bg-dark text-white" id="student-submit">
+                            </form>
+                        </div>
                 </article>
             </section>
 
