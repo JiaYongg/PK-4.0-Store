@@ -51,12 +51,17 @@
     padding-bottom: 0px;
 }
 
+#currency-container {
+    height: 50px;
+}
+
 #currency-selector {
-    line-height: 100px;
+    height: 100%;
+    line-height: 60px;
 }
 /* General */
 h1, h2, h3, h4, h5, h6 {
-    font-family: Playfair Display, 'serif'; 
+    font-family: Montserrat, 'sans-serif';
 }
 
 h1 {
@@ -67,8 +72,15 @@ body {
     font-family: Work Sans, 'sans-serif';
 }
 
+footer {
+    height: 60px;
+}
+
 footer p {
     font-size: 14px;
+    height: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 /* Carousel Container */
 #carousel-home {
