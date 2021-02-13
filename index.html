@@ -30,13 +30,21 @@
             <header class="sticky-top">
                 <div class="container-fluid px-0">
                     <nav class="navbar navbar-expand-lg px-5 navbar-light bg-light">
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <a class="navbar-brand" href="index.html" target="_self"><img src="images/icon.png" class="logo"/></a>
+                        </div>
+                        <div class="col-lg-4 d-flex align-items-center" id="currency-container">
+                            <p id="currency-selector" style="border: 1px solid red;">Currency:</p>
+                            <button type="button" class="btn btn-light" id="sgd"><img src="images/sgd.png" alt="SGD" width="30"/></button>
+                            <button type="button" class="btn btn-light" id="usd"><img src="images/USA.jpeg" alt="USD" width="30"/></button>
+                            <button type="button" class="btn btn-light" id="euro"><img src="images/euros.png" alt="Euros" width="30"/></button>
+                            <button type="button" class="btn btn-light" id="pounds"><img src="images/UK.png" alt="Pounds" width="30"/></button>
+                            <button type="button" class="btn btn-light" id="cny"><img src="images/China.png" alt="CNY" width="30"/></button>
                         </div>
                         <button class="navbar-toggler col-xs-4" type="button" data-bs-toggle="collapse" data-bs-target="#sideMenu" aria-controls="sideMenu" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon small"></span>
                         </button>
-                        <div class="col-lg-8 col-12">
+                        <div class="col-lg-4 col-12">
                             <div class="collapse navbar-collapse" id="sideMenu">
                                 <div class="navbar-nav w-100 d-flex justify-content-end">
                                     <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -192,7 +200,7 @@
                               <div class="form-row py-2">
                                 <div class="form-group col">
                                   <label for="contact-msg">Message</label>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  <textarea class="form-control" id="contact-msg" rows="5"></textarea>
                                 </div>
                               </div>
                                 <input type="submit" value="Send" class="btn bg-dark text-white" id="student-submit">
