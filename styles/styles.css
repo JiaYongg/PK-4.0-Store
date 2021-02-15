@@ -47,6 +47,16 @@ footer p {
     margin-bottom: auto;
 }
 
+@media only screen and (max-width: 991px) {
+    footer {
+        height: 80px;
+    }
+
+    footer p {
+        height: 60px;
+    }
+}
+
 /* Cart Containers */
 .cart-items {
     position: fixed;
