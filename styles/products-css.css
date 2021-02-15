@@ -1,0 +1,45 @@
+.card {
+    background-color: rgba(255, 255, 255,0.8);
+    margin: 15px 10px;
+    transition: .6s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card-block {
+    padding: 10px;
+ }
+  
+  div.products-listing .card {
+      display: inline-block;
+      padding: 8px;
+      text-decoration: none;
+      height: auto; 
+      width: 340px;
+      /* max-height: 370px; */
+      text-align: center;
+      vertical-align: top;
+    }
+
+  div.products-listing img {
+      margin: auto;
+      text-align: center;
+      width: 150px;
+      height: 150px;
+  }
+
+  div.products-listing .card p, div.products-listing .card h5 {
+      white-space: normal;
+  }
+
+  div.products-listing .card h5 {
+      font-size: 16px;
+      height: 45px;
+  }
+
+  .product-desc {
+      font-size: 12px;
+      height: 150px;
+  }

@@ -1,51 +1,10 @@
-/* Preloader */
-
-/* .preloader-overlay {
-    position: fixed;
-    background-color: rgba(255,255,255,1);
-    width: 100vw;
-    height: 100vh;
-    z-index: 999;
-}
-
-.s-container {
-    height: 100%;
-    display: flex;
-}
-
-.preloader-container {
-    width: 300px;
-    height: 300px;
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.no-scroll {
-    overflow: hidden;
-}  */
-
-/* body {
-    overflow-x: hidden;
-} */
-
-#preloader{
-    max-width: 80%;
-    margin: 14% auto;
-    justify-content: center;
-    display: flex;
-}
+/* UNIVERSAL STYLESHEET APPLIES THROUGHOUT SITE */
 
 /* Header */
 .logo {
     width: 100px;
 }
-.site-title {
-    font-weight: 600;
-    font-size: 1.3em;
-    line-height: 100px;
-    font-family: Montserrat;
-}
+
 .navbar {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -63,6 +22,7 @@
     height: 100%;
     line-height: 60px;
 }
+
 /* General */
 h1, h2, h3, h4, h5, h6 {
     font-family: Montserrat, 'sans-serif';
@@ -86,34 +46,6 @@ footer p {
     margin-top: auto;
     margin-bottom: auto;
 }
-/* Carousel Container */
-#carousel-home {
-    max-height: 420px;
-}
-
-#carousel-home img {
-    max-height: 420px;
-}
-
-/* Categories Grids */
-#jewelries-cat {
-    background-image: url('../images/jewelries-grid.jpg');
-    background-size: cover;
-    height: 450px;
-}
-
-#mens-clothing {
-    background-image: url('../images/mens-grid.jpg');
-    background-size: cover;
-    height: 225px;
-    margin-bottom: 10px;
-}
-
-#womens-clothing {
-    background-image: url('../images/womens-grid.jpg');
-    background-size: cover;
-    height: 225px;
-}
 
 /* Cart Containers */
 .cart-items {
@@ -128,72 +60,6 @@ footer p {
     padding: 10px;
     display: none;
     border-radius: 0px 0px 12px 12px;
-}
-
-/* Featured Products TESTING */
-.card {
-    background-color: rgba(255, 255, 255,0.8);
-    margin: 15px 10px;
-    transition: .6s ease;
-  }
-  
-  .card:hover {
-    transform: scale(1.02);
-  }
-  
-  .card-block {
-    padding: 10px;
- }
-  
-  .top-products {
-    background-color: #fff;
-    overflow: auto;
-    white-space: nowrap;
-  }
-  
-  ::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-      background: transparent;
-  }
-  
-  div.top-products .card {
-      display: inline-block;
-      padding: 8px;
-      text-decoration: none;
-      height: auto; 
-      width: 340px;
-      /* max-height: 370px; */
-      text-align: center;
-      vertical-align: top;
-    }
-
-  div.top-products img {
-      margin: auto;
-      text-align: center;
-      width: 150px;
-      height: 150px;
-  }
-
-  div.top-products .card p, div.top-products .card h5 {
-      white-space: normal;
-  }
-
-  div.top-products .card h5 {
-      font-size: 16px;
-      height: 45px;
-  }
-
-  .product-desc {
-      font-size: 12px;
-      height: 150px;
-  }
-
-  /* About Section */
-
-#about {
-    background-color:#b3e0ff;
-    min-height: 600px;
 }
 
 /* Game Button */
@@ -227,21 +93,4 @@ footer p {
     font-weight: 600;
     text-transform: uppercase;
     display: none;
-}
-
-/* Contact Section */
-.separator {
-    display: block;
-    width: 125px;
-    border-top: 8px solid lightskyblue;
-}
-
-#contact {
-    height: 600px;
-}
-
-@media only screen and (max-width: 991px) {
-    #contact {
-        height: 100%;
-    }
 }
