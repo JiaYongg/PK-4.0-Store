@@ -53,10 +53,13 @@ function updatePrice(data, country){
     let newArrivals = document.getElementById("new-arrivals");
 
     var currencyType = 'SGD';
+
     //Top Products API
     topProducts.innerHTML = data
     .map(topItem => {
-        let totalPrice = topItem.price; 
+        let totalPrice = topItem.price; // defaults the current currency to SGD
+        /* Selects first 5 item from the API and checks if the user has clicked on the flag, if not, the default currency would be SGD,
+        else it will be the country that the user clicked on respectively */
         if (topItem.id <= 5){  
             if (country == 'US'){
                 currencyType = 'USD';
@@ -92,7 +95,9 @@ function updatePrice(data, country){
     //New Arrivals API 
     newArrivals.innerHTML = data
     .map(newItem => {
-        let totalPrice = newItem.price; 
+        let totalPrice = newItem.price; // defaults the current currency to SGD
+        /* Selects last 5 item from the API and checks if the user has clicked on the flag, if not, the default currency would be SGD,
+        else it will be the country that the user clicked on respectively */
         if (newItem.id >= 16){  
             if (country == 'US'){
                 currencyType = 'USD';
@@ -144,6 +149,8 @@ function updatePrice(data, country){
 
 function loadData(data){
     
+    /* When the html tag with the ID of sgd, usd, jpy, krw or rmb is clicked, set country variable to their respective id
+    and call updatePrice function which takes in the API data and the country given */
     var country = 'SG';
     $('#sgd, #usd, #jpy, #krw, #rmb').click(function () {
         if (this.id == 'sgd') {
