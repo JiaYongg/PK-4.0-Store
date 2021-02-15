@@ -2,7 +2,6 @@
 var currencyRate;
 
 /* PreLoader */
-
 function myFunction(){
     setTimeout(showPage, 3000)
 }
@@ -132,10 +131,13 @@ function updatePrice(data, country){
 
     /* Add item to cart*/
     let carts = document.querySelectorAll('.add-item-cart');
-
+    /* Variables to check if object already in cart */
+    var inCart = 'inCart';
+    var inCartCount = 0;
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < 5; i++){
         carts[i].addEventListener('click', () =>{
+            (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
         })
     }
