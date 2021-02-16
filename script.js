@@ -49,7 +49,6 @@ function updatePrice(data, country){
 
     var currencyType = 'SGD';
     var currencySymbol = '$';
-    console.log(data);
     //Top Products API
     topProducts.innerHTML = data
     .map(topItem => {
@@ -73,7 +72,7 @@ function updatePrice(data, country){
             }
             else if (country == 'CN'){
                 currencyType = 'RMB';
-                currencySymbol = '¥';
+                currencySymbol = '元';
                 totalPrice = topItem.price * currencyRate.CNY;
             }  
             return`
@@ -104,14 +103,17 @@ function updatePrice(data, country){
             }  
             else if (country == 'JP'){
                 currencyType = 'Yen';
+                currencySymbol = '¥';
                 totalPrice = newItem.price * currencyRate.JPY;
             }
             else if (country == 'KR'){
                 currencyType = 'Won';
+                currencySymbol = '₩';
                 totalPrice = newItem.price * currencyRate.KRW;
             }
             else if (country == 'CN'){
                 currencyType = 'RMB';
+                currencySymbol = '元';
                 totalPrice = newItem.price * currencyRate.CNY;
             }  
             return`
@@ -151,6 +153,8 @@ function updatePrice(data, country){
             totalCost(data[i+10]);
         })
     }
+
+    
 }
 
 function loadData(data){
@@ -247,40 +251,36 @@ function totalCost(product){
 }
 
 function displayCart(){
+    let cartNumbers = localStorage.getItem('cartNumbers');
     let cartItems = localStorage.getItem('productsInCart');
-
     cartItems = JSON.parse(cartItems);
-    let productContainer = document.querySelector('.products');
+    let productContainer = document.getElementById('cart-added-items');
     let cartCost = localStorage.getItem('totalCost');
     if (cartItems && productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         productContainer.innerHTML = '';
         /* Looping through every values of the key productsInCart */
         Object.values(cartItems).map(item => {
-            productContainer.innerHTML += `
-            <div class="product">
-                <ion-icon name="close-circle-outline"></ion-icon>
-                <img class="card-img-top img-fluid" src="${item.image}">
-                <span>${item.title}</span>
-            </div>
-            <div class="price">$${item.price}</div>
-            <div class="quantity">
-                <ion-icon name="caret-back-circle-outline"></ion-icon>
-                <span>${item.inCart}</span>
-                <ion-icon name="caret-forward-circle-outline"></ion-icon>
-            </div>
-            <div class="total">
-                $${item.inCart * item.price} 
-            </div>
+            if (cartNumbers != 0){
+                productContainer.innerHTML += `
+                <tbody id="cart-added-items">
+                <tr>
+                    <td scope="row"><img src="${item.image}" width="100"><br>${item.title}</td>
+                    <td>${item.price}</td>
+                    <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
+                    <td>${item.price * item.inCart}</td>
+                    <td><ion-icon name="close-circle-outline"></ion-icon></td>
+                </tr>
+                </tbody>
             `;
+            }      
         });
-
         productContainer.innerHTML += `
-            <div class="basketContainer>
-                <h4 class="basketTotalName>
-                    Basket Total
-                    $${cartCost}
-                </h4>
-            </div>
+        <div class="basketContainer>
+            <h4 class="basketTotalName>
+                Basket Total
+                $${cartCost}
+            </h4>
+        </div>
         `
     }
 }

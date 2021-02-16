@@ -52,14 +52,17 @@ function updatePrice(data, country){
         }  
         else if (country == 'JP'){
             currencyType = 'Yen';
+            currencySymbol = '¥';
             totalPrice = prodItem.price * currencyRate.JPY;
         }
         else if (country == 'KR'){
             currencyType = 'Won';
+            currencySymbol = '₩';
             totalPrice = prodItem.price * currencyRate.KRW;
         }
         else if (country == 'CN'){
             currencyType = 'RMB';
+            currencySymbol = '元';
             totalPrice = prodItem.price * currencyRate.CNY;
         } 
         return`
