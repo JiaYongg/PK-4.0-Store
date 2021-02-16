@@ -1,21 +1,6 @@
 /* Global var */
 var currencyRate;
 
-
-/* Cart Hover */
-(function(){
-$("#cart").hover(function() {
-      $(".cart-items").fadeToggle("fast");
-    });
-})();
-
-/* Wheel of Fortune Hover */
-(function(){
-$("#wheelImg").hover(function() {
-      $("#game-msg").fadeToggle("slow", 0.0);
-    });
-})();
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')
@@ -52,14 +37,17 @@ function updatePrice(data, country){
         }  
         else if (country == 'JP'){
             currencyType = 'Yen';
+            currencySymbol = '¥';
             totalPrice = prodItem.price * currencyRate.JPY;
         }
         else if (country == 'KR'){
             currencyType = 'Won';
+            currencySymbol = '₩';
             totalPrice = prodItem.price * currencyRate.KRW;
         }
         else if (country == 'CN'){
             currencyType = 'RMB';
+            currencySymbol = '元';
             totalPrice = prodItem.price * currencyRate.CNY;
         } 
         return`
@@ -82,7 +70,8 @@ function updatePrice(data, country){
     var inCartCount = 0;
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < carts.length; i++){
-        carts[i].addEventListener('click', () =>{
+        carts[i].addEventListener('click', (event) =>{
+            event.preventDefault();
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);
