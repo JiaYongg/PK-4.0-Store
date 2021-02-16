@@ -35,6 +35,7 @@ function apiCurrency(){
     .catch(err => console.log(err.message));
 }
 
+
 /* Item API */
 function apiStore(){
     fetch('https://fakestoreapi.com/products')
@@ -43,91 +44,44 @@ function apiStore(){
     .catch(err => console.log(err.message));
 }
 
+
 function updatePrice(data, country){
-    let topProducts = document.getElementById("top-products");
-    let newArrivals = document.getElementById("new-arrivals");
+    let productListing = document.getElementById("products-listing");
 
     var currencyType = 'SGD';
     var currencySymbol = '$';
-    console.log(data);
-    //Top Products API
-    topProducts.innerHTML = data
-    .map(topItem => {
-        let totalPrice = topItem.price; // defaults the current currency to SGD
-        /* Selects first 5 item from the API and checks if the user has clicked on the flag, if not, the default currency would be SGD,
-        else it will be the country that the user clicked on respectively */
-        if (topItem.id <= 5){  
-            if (country == 'US'){
-                currencyType = 'USD';
-                totalPrice = topItem.price * currencyRate.USD;  
-            }  
-            else if (country == 'JP'){
-                currencyType = 'Yen';
-                currencySymbol = '¥';
-                totalPrice = topItem.price * currencyRate.JPY;
-            }
-            else if (country == 'KR'){
-                currencyType = 'Won';
-                currencySymbol = '₩';
-                totalPrice = topItem.price * currencyRate.KRW;
-            }
-            else if (country == 'CN'){
-                currencyType = 'RMB';
-                currencySymbol = '¥';
-                totalPrice = topItem.price * currencyRate.CNY;
-            }  
-            return`
-            <div class="card shadow">
-                <img class="card-img-top img-fluid" src="${topItem.image}">
-                <div class="card-block">
-                        <h5 class="card-title">${topItem.title}</h4>
-                        <p class="card-text product-desc">${topItem.description}</p>
-                        <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
-                        <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
-                </div>
-            </div>
-            `  
-            
-        }        
-    }).join("");
 
-    //New Arrivals API 
-    newArrivals.innerHTML = data
-    .map(newItem => {
-        let totalPrice = newItem.price; // defaults the current currency to SGD
-        /* Selects last 5 item from the API and checks if the user has clicked on the flag, if not, the default currency would be SGD,
-        else it will be the country that the user clicked on respectively */
-        if (newItem.id >= 16){  
-            if (country == 'US'){
-                currencyType = 'USD';
-                totalPrice = newItem.price * currencyRate.USD;  
-            }  
-            else if (country == 'JP'){
-                currencyType = 'Yen';
-                totalPrice = newItem.price * currencyRate.JPY;
-            }
-            else if (country == 'KR'){
-                currencyType = 'Won';
-                totalPrice = newItem.price * currencyRate.KRW;
-            }
-            else if (country == 'CN'){
-                currencyType = 'RMB';
-                totalPrice = newItem.price * currencyRate.CNY;
-            }  
-            return`
-            <div class="card shadow">
-                <img class="card-img-top img-fluid" src="${newItem.image}">
-                <div class="card-block">
-                        <h5 class="card-title">${newItem.title}</h4>
-                        <p class="card-text product-desc">${newItem.description}</p>
-                        <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
-                        <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
-                </div>
+    // All Products API
+    productListing.innerHTML = data
+    .map(prodItem => {
+        let totalPrice = prodItem.price; // defaults the current currency to SGD
+        if (country == 'US'){
+            currencyType = 'USD';
+            totalPrice = prodItem.price * currencyRate.USD;  
+        }  
+        else if (country == 'JP'){
+            currencyType = 'Yen';
+            totalPrice = prodItem.price * currencyRate.JPY;
+        }
+        else if (country == 'KR'){
+            currencyType = 'Won';
+            totalPrice = prodItem.price * currencyRate.KRW;
+        }
+        else if (country == 'CN'){
+            currencyType = 'RMB';
+            totalPrice = prodItem.price * currencyRate.CNY;
+        } 
+        return`
+        <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
+            <img class="card-img-top img-fluid" src="${prodItem.image}">
+            <div class="card-block">
+                <h5 class="card-title">${prodItem.title}</h4>
+                <p class="card-text">${prodItem.description}</p>
+                <p class="card-text"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
+                <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
             </div>
-            ` 
-             
-            
-        }        
+        </div>
+        `
     }).join("");
 
     /* Add item to cart*/
@@ -136,7 +90,7 @@ function updatePrice(data, country){
     var inCart = 'inCart';
     var inCartCount = 0;
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
-    for (let i=0; i < 5; i++){
+    for (let i=0; i < carts.length; i++){
         carts[i].addEventListener('click', () =>{
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
@@ -144,13 +98,6 @@ function updatePrice(data, country){
         })
     }
 
-    for (let i=5; i < carts.length; i++){
-        carts[i].addEventListener('click', () =>{
-            (data[i+10])[inCart] = inCartCount; // Adds the variables into the API JSON data
-            cartNumbers(data[i+10]) // when button is clicked takes api data on the respective object/item that is being clicked.
-            totalCost(data[i+10]);
-        })
-    }
 }
 
 function loadData(data){
@@ -243,6 +190,8 @@ function totalCost(product){
     else{
         localStorage.setItem('totalCost', product.price)
     }
+
+    
 }
 
 function displayCart(){
