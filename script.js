@@ -11,13 +11,6 @@ function showPage(){
     document.getElementById("overall_content").style.display = "block";
 }
 
-/* Cart Hover */
-(function(){
-$("#cart").hover(function() {
-      $(".cart-items").fadeToggle("fast");
-    });
-})();
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')

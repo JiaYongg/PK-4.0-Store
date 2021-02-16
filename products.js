@@ -1,21 +1,6 @@
 /* Global var */
 var currencyRate;
 
-
-/* Cart Hover */
-(function(){
-$("#cart").hover(function() {
-      $(".cart-items").fadeToggle("fast");
-    });
-})();
-
-/* Wheel of Fortune Hover */
-(function(){
-$("#wheelImg").hover(function() {
-      $("#game-msg").fadeToggle("slow", 0.0);
-    });
-})();
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')
