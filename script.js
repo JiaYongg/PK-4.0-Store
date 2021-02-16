@@ -73,7 +73,7 @@ function updatePrice(data, country){
             }
             else if (country == 'CN'){
                 currencyType = 'RMB';
-                currencySymbol = '¥';
+                currencySymbol = '元';
                 totalPrice = topItem.price * currencyRate.CNY;
             }  
             return`
