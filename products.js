@@ -85,7 +85,8 @@ function updatePrice(data, country){
     var inCartCount = 0;
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < carts.length; i++){
-        carts[i].addEventListener('click', () =>{
+        carts[i].addEventListener('click', (event) =>{
+            event.preventDefault();
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);

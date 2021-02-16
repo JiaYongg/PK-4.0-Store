@@ -18,13 +18,6 @@ $("#cart").hover(function() {
     });
 })();
 
-/* Wheel of Fortune Hover */
-(function(){
-$("#wheelImg").hover(function() {
-      $("#game-msg").fadeToggle("slow", 0.0);
-    });
-})();
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')
@@ -139,7 +132,8 @@ function updatePrice(data, country){
     var inCartCount = 0;
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < 5; i++){
-        carts[i].addEventListener('click', () =>{
+        carts[i].addEventListener('click', (event) =>{
+            event.preventDefault();
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);
@@ -147,7 +141,8 @@ function updatePrice(data, country){
     }
 
     for (let i=5; i < carts.length; i++){
-        carts[i].addEventListener('click', () =>{
+        carts[i].addEventListener('click', (event) =>{
+            event.preventDefault();
             (data[i+10])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i+10]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i+10]);
