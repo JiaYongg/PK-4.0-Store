@@ -52,6 +52,7 @@ function updatePrice(data, country){
     let newArrivals = document.getElementById("new-arrivals");
 
     var currencyType = 'SGD';
+    var currencySymbol = '$';
 
     //Top Products API
     topProducts.innerHTML = data
@@ -66,14 +67,17 @@ function updatePrice(data, country){
             }  
             else if (country == 'JP'){
                 currencyType = 'Yen';
+                currencySymbol = '¥';
                 totalPrice = topItem.price * currencyRate.JPY;
             }
             else if (country == 'KR'){
                 currencyType = 'Won';
+                currencySymbol = '₩';
                 totalPrice = topItem.price * currencyRate.KRW;
             }
             else if (country == 'CN'){
                 currencyType = 'RMB';
+                currencySymbol = '¥';
                 totalPrice = topItem.price * currencyRate.CNY;
             }  
             return`
@@ -82,7 +86,7 @@ function updatePrice(data, country){
                 <div class="card-block">
                         <h5 class="card-title">${topItem.title}</h4>
                         <p class="card-text product-desc">${topItem.description}</p>
-                        <p class="card-text product-price"><big>$${totalPrice.toFixed(2)} ${currencyType}</big></p>
+                        <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
                         <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
                 </div>
             </div>
