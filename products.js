@@ -1,15 +1,6 @@
 /* Global var */
 var currencyRate;
 
-/* PreLoader */
-function myFunction(){
-    setTimeout(showPage, 3000)
-}
-
-function showPage(){
-    document.getElementById("preloader").style.display = "none";
-    document.getElementById("overall_content").style.display = "block";
-}
 
 /* Cart Hover */
 (function(){
@@ -72,7 +63,7 @@ function updatePrice(data, country){
             totalPrice = prodItem.price * currencyRate.CNY;
         } 
         return`
-        <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
+        <div class="card shadow col-lg-3 col-sm-6 col-xs-12 filterDiv ${data.category}">
             <img class="card-img-top img-fluid" src="${prodItem.image}">
             <div class="card-block">
                 <h5 class="card-title">${prodItem.title}</h4>
@@ -83,7 +74,7 @@ function updatePrice(data, country){
         </div>
         `
     }).join("");
-
+    
     /* Add item to cart*/
     let carts = document.querySelectorAll('.add-item-cart');
     /* Variables to check if object already in cart */
@@ -123,7 +114,7 @@ function loadData(data){
         
         updatePrice(data, country);
     });
-
+    console.log(data);
     updatePrice(data, country);
 }
 
@@ -233,9 +224,45 @@ function displayCart(){
     }
 }
 
+function filterSelection(item){
+    var itemCat = document.getElementsByClassName('filterDiv');
+
+    if (item == 'all') item = "";
+
+    for (var i = 0; i < itemCat.length; i++){
+        removeDiv(itemCat[i], "show");
+        if (itemCat[i].className.indexOf(item) > -1) addDiv(itemCat[i], "show");
+    }
+}
+
+function removeDiv(element, name){
+    var first, second;
+
+    first = element.className.split(" ");
+    second = name.split(" ");
+
+    for (var i = 0; i < second.length; i++){
+        while (first.indexOf(second[i]) > -1){
+            first.splice(first.indexOf(second[i]), 1);
+        }
+    }
+    element.className = first.join(" ");
+}
+
+function addDiv(element, name){
+    var first, second;
+    first = element.className.split(" ");
+    second = name.split(" ");
+    for (var i = 0; i < second.length; i++) {
+      if (first.indexOf(second[i]) == -1) {element.className += " " + second[i];}
+    }
+}
+
+
 $(document).ready(function(){
     apiCurrency();
     apiStore();
     onLoadCartNumbers();
     displayCart();
+    filterSelection("all")
 })
