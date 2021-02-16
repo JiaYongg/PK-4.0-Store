@@ -14,46 +14,44 @@
     </head>
     <!--End of Head-->
     <!--Start of Body-->
-    <body onload="myFunction()">
-        <!-- Preloader Container - Require Edit after implementation -->   
-        <div class="container-fluid preloader-overlay text-center">
-            <div class="s-container col-lg-12 mr-auto">
-              <div class="preloader-container" id="preloader">
-                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_wdgehveh.json"  background="transparent"  speed="1.5"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>  
-              </div>
-            </div>
-        </div>
-        <div id="overall_content" style="display: none;">
-            <!--Start of Header-->
-            <header class="sticky-top">
-                <div class="container-fluid px-0">
-                    <nav class="navbar navbar-expand-lg px-5 navbar-light bg-light">
-                        <div class="col-lg-2 col-sm-10">
-                            <a class="navbar-brand" href="index.html" target="_self"><img src="images/icon.png" class="logo"/></a>
-                        </div>
-                        <button class="navbar-toggler col-xs-4" type="button" data-bs-toggle="collapse" data-bs-target="#sideMenu" aria-controls="sideMenu" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon small"></span>
-                        </button>
+    <body>
 
-                        <div class="col-lg-4 col-12">
-                            <div class="collapse navbar-collapse" id="sideMenu">
-                                <div class="navbar-nav w-100 d-flex justify-content-end">
-                                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                                    <a class="nav-link" href="products.html">Products</a>
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                    <a class="nav-link" id="cart" class="droppable" href="#"><img src="images/cart.png" alt="Cart" width="30"/><span>0</span></a>                  
-                                </div>
+        <!--Start of Header-->
+        <header class="sticky-top">
+            <div class="container-fluid px-0">
+                <nav class="navbar navbar-expand-lg px-5 navbar-light bg-light">
+                    <div class="col-lg-2 col-sm-10">
+                        <a class="navbar-brand" href="index.html" target="_self"><img src="images/icon.png" class="logo"/></a>
+                    </div>
+                    <button class="navbar-toggler col-xs-4" type="button" data-bs-toggle="collapse" data-bs-target="#sideMenu" aria-controls="sideMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon small"></span>
+                    </button>
+                    <div class="col-lg-6 col-md-12 d-flex align-items-center" id="currency-container">
+                        <p id="currency-selector">Currency:</p>
+                        <button type="button" class="btn btn-light" id="sgd"><img src="images/sgd.png" alt="SG Dollars" class="img-fluid" title="SGD" width="30"/></button>
+                        <button type="button" class="btn btn-light" id="usd"><img src="images/USA.jpeg" alt="US Dollars" class="img-fluid" title="USD" width="30"/></button>
+                        <button type="button" class="btn btn-light" id="jpy"><img src="images/jp.png" alt="Japanese Yen" class="img-fluid" title="JPY" width="30"/></button>
+                        <button type="button" class="btn btn-light" id="krw"><img src="images/kr.png" alt="Korean Won" class="img-fluid" title="KRW" width="30"/></button>
+                        <button type="button" class="btn btn-light" id="rmb"><img src="images/China.png" alt="RMB" class="img-fluid" title="RMB" width="30"/></button>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="collapse navbar-collapse" id="sideMenu">
+                            <div class="navbar-nav w-100 d-flex justify-content-end">
+                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link active" aria-current="page" href="products.html">Products</a>
+                                <a class="nav-link" href="index.html#contact">Contact</a>
+                                <a class="nav-link" id="cart" class="droppable" href="cart.html"><img src="images/cart.png" alt="Cart" width="30"/><span>0</span></a>                  
                             </div>
                         </div>
-                    </nav>
-                </div>
-            </header>
-            <!--End of Header-->
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--End of Header-->
 
-            <footer class="container-fluid bg-dark text-white w-100 d-flex align-items-center justify-content-center text-center">
-                <p id="footer-text">Copyright © 2020 · All Rights Reserved · Team 1 - PK4.0 Store <br/> Created for Interactive Development | Assignment 3</p>
-            </footer>
-        </div>
+        <footer class="container-fluid bg-dark text-white w-100 d-flex align-items-center justify-content-center text-center">
+            <p id="footer-text">Copyright © 2020 · All Rights Reserved · Team 1 - PK4.0 Store <br/> Created for Interactive Development | Assignment 3</p>
+        </footer>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
