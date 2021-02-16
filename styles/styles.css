@@ -104,3 +104,65 @@ footer p {
     text-transform: uppercase;
     display: none;
 }
+
+/* Cart Page */
+
+.products-container{
+    max-width: 650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.product-header{
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.product-title{
+    width: 45%;
+}
+
+.price{
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.quantity{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.total{
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.products{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.basketContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.basketTotalName{
+    width: 30%;
+}
+
+.basketTotal{
+    width: 10%;
+}

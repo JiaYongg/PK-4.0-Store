@@ -143,12 +143,15 @@ function updatePrice(data, country){
         carts[i].addEventListener('click', () =>{
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
+            totalCost(data[i]);
         })
     }
 
     for (let i=5; i < carts.length; i++){
         carts[i].addEventListener('click', () =>{
+            (data[i+10])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i+10]) // when button is clicked takes api data on the respective object/item that is being clicked.
+            totalCost(data[i+10]);
         })
     }
 }
@@ -181,6 +184,7 @@ function loadData(data){
     updatePrice(data, country);
 }
 
+/* Local storage of the cart number/existing item in the cart */
 function cartNumbers(product){
     console.log(product);
     let prodNumber = localStorage.getItem('cartNumbers');
@@ -195,6 +199,7 @@ function cartNumbers(product){
         localStorage.setItem('cartNumbers', 1);
         document.querySelector('#cart span').textContent = 1
     }
+    setItems(product);
     
 }
 /* displays the number of items in the cart in the local storage upon loading */
@@ -206,9 +211,89 @@ function onLoadCartNumbers(){
     }
 }
 
+function setItems(product){
+    let cartItems = localStorage.getItem('productsInCart'); // Creates a new key in the local storage
+    cartItems = JSON.parse(cartItems); // Converts JSON object into normal object
+
+    if (cartItems != null){ // Checks if item already exist in the cart
+        if (cartItems[product.id] == undefined){ // Checks if item is a different item when its clicked after the 2nd time
+            //Adds cart item to productsInCart
+            cartItems = {
+                /*Using the Rest operator to store the other items other than the first item 
+                that is being clicked into an array in productsInCart */
+                ...cartItems,
+                [product.id] : product
+            }
+        }
+        cartItems[product.id].inCart += 1; // Increases the count by 1 if item already exist in the cart
+    }
+    else{
+        product.inCart = 1; // If item does not exist in cart, set the count to 1 and create a variable to store product object
+        cartItems = {
+            [product.id] : product
+        }
+    }
+    /* Sets the key "productsInCart" to store values of cartItems assigned above and converts from a normal object to a JSON object */
+    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+}
+
+function totalCost(product){
+    let cartCost = localStorage.getItem('totalCost');
+
+    if (cartCost != null){
+        cartCost = parseInt(cartCost); // Converts from string to integer as local storage always returns a string
+        localStorage.setItem('totalCost', cartCost + product.price);
+    }
+    else{
+        localStorage.setItem('totalCost', product.price)
+    }
+
+    
+}
+
+function displayCart(){
+    let cartItems = localStorage.getItem('productsInCart');
+
+    cartItems = JSON.parse(cartItems);
+    console.log(cartItems);
+    let productContainer = document.querySelector('.products');
+    let cartCost = localStorage.getItem('totalCost');
+    if (cartItems && productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
+        productContainer.innerHTML = '';
+        /* Looping through every values of the key productsInCart */
+        Object.values(cartItems).map(item => {
+            productContainer.innerHTML += `
+            <div class="product">
+                <ion-icon name="close-circle-outline"></ion-icon>
+                <img class="card-img-top img-fluid" src="${item.image}">
+                <span>${item.title}</span>
+            </div>
+            <div class="price">$${item.price}</div>
+            <div class="quantity">
+                <ion-icon name="caret-back-circle-outline"></ion-icon>
+                <span>${item.inCart}</span>
+                <ion-icon name="caret-forward-circle-outline"></ion-icon>
+            </div>
+            <div class="total">
+                $${item.inCart * item.price} 
+            </div>
+            `;
+        });
+
+        productContainer.innerHTML += `
+            <div class="basketContainer>
+                <h4 class="basketTotalName>
+                    Basket Total
+                    $${cartCost}
+                </h4>
+            </div>
+        `
+    }
+}
 
 $(document).ready(function(){
     apiCurrency();
     apiStore();
     onLoadCartNumbers();
+    displayCart();
 })
