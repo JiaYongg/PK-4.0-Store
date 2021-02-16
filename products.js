@@ -76,8 +76,8 @@ function updatePrice(data, country){
             <img class="card-img-top img-fluid" src="${prodItem.image}">
             <div class="card-block">
                 <h5 class="card-title">${prodItem.title}</h4>
-                <p class="card-text">${prodItem.description}</p>
-                <p class="card-text"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
+                <p class="card-text product-desc">${prodItem.description}</p>
+                <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
                 <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
             </div>
         </div>
