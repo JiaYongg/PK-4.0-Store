@@ -198,6 +198,7 @@ function cartNumbers(product){
     setItems(product);
     
 }
+
 /* displays the number of items in the cart in the local storage upon loading */
 function onLoadCartNumbers(){
     let prodNumber = localStorage.getItem('cartNumbers');
