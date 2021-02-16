@@ -49,11 +49,11 @@ footer p {
 
 @media only screen and (max-width: 991px) {
     footer {
-        height: 80px;
+        height: 100%;
     }
 
     footer p {
-        height: 60px;
+        height: 80px;
     }
 }
 

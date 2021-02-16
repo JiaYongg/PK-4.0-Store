@@ -5,3 +5,7 @@
 #empty-cart-img {
     width: 400px;
 }
+
+.empty-cart {
+    display: none;
+}
