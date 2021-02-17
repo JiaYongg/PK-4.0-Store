@@ -39,8 +39,6 @@ function updatePrice(data, country){
     // All Products API
     productListing.innerHTML = data
     .map(prodItem => {
-        let itemCat = prodItem.category;
-        console.log(itemCat)
         let totalPrice = prodItem.price; // defaults the current currency to SGD
         if (country == 'US'){
             currencyType = 'USD';
@@ -72,7 +70,6 @@ function updatePrice(data, country){
             </div>
         </div>
         `
-
     }).join("");
     
     /* Add item to cart*/
@@ -89,10 +86,9 @@ function updatePrice(data, country){
             totalCost(data[i]);
         })
     }
-
 }
 
-function filterResult(data, itemCategory){
+function filterResult(data, itemCategory, country){
 
     let productListing = document.getElementById("products-listing");
 
@@ -105,6 +101,25 @@ function filterResult(data, itemCategory){
         let itemCat = prodItem.category;
         let totalPrice = prodItem.price; // defaults the current currency to SGD
         if (itemCategory == itemCat || itemCategory == 'all'){
+            if (country == 'US'){
+                currencyType = 'USD';
+                totalPrice = prodItem.price * currencyRate.USD;  
+            }  
+            else if (country == 'JP'){
+                currencyType = 'Yen';
+                currencySymbol = '¥';
+                totalPrice = prodItem.price * currencyRate.JPY;
+            }
+            else if (country == 'KR'){
+                currencyType = 'Won';
+                currencySymbol = '₩';
+                totalPrice = prodItem.price * currencyRate.KRW;
+            }
+            else if (country == 'CN'){
+                currencyType = 'RMB';
+                currencySymbol = '元';
+                totalPrice = prodItem.price * currencyRate.CNY;
+            }
             return`
             <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
                 <img class="card-img-top img-fluid" src="${prodItem.image}">
@@ -160,7 +175,7 @@ function loadData(data){
         else if (this.id == 'electronics'){
             itemCat = 'electronics';
         }
-        filterResult(data, itemCat)
+        filterResult(data, itemCat, country);
     }); 
     updatePrice(data, country);
     

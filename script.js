@@ -147,9 +147,8 @@ function updatePrice(data, country){
             totalCost(data[i+10]);
         })
     }
-
-    
 }
+
 
 function loadData(data){
     /* When the html tag with the ID of sgd, usd, jpy, krw or rmb is clicked, set country variable to their respective id
@@ -261,7 +260,7 @@ function displayCart(){
                     <td>${item.price}</td>
                     <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
                     <td>${item.price * item.inCart}</td>
-                    <td><ion-icon name="close-circle-outline"></ion-icon></td>
+                    <td><button id='remove-item'>X</button></td>
                 </tr>
                 </tbody>
             `;
@@ -331,9 +330,33 @@ $("#contact-submit").on("click", function(e){
     });
 })
 
+
+
 $(document).ready(function(){
     apiCurrency();
     apiStore();
     onLoadCartNumbers();
     displayCart();
+})
+
+
+var jewel = document.getElementById('jewelries-cat');
+
+jewel.addEventListener('click', function(){
+    localStorage.setItem('trigger', 'jewels')
+    window.location.href = 'products.html'
+})
+
+var men = document.getElementById('mens-clothing');
+
+men.addEventListener('click', function(){
+    localStorage.setItem('trigger', 'men')
+    window.location.href = 'products.html'
+})
+
+var women = document.getElementById('womens-clothing');
+
+women.addEventListener('click', function(){
+    localStorage.setItem('trigger', 'women')
+    window.location.href = 'products.html'
 })
