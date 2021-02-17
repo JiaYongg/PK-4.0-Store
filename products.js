@@ -36,10 +36,11 @@ function updatePrice(data, country){
 
     var currencyType = 'SGD';
     var currencySymbol = '$';
-
     // All Products API
     productListing.innerHTML = data
     .map(prodItem => {
+        let itemCat = prodItem.category;
+        console.log(itemCat)
         let totalPrice = prodItem.price; // defaults the current currency to SGD
         if (country == 'US'){
             currencyType = 'USD';
@@ -59,9 +60,9 @@ function updatePrice(data, country){
             currencyType = 'RMB';
             currencySymbol = '元';
             totalPrice = prodItem.price * currencyRate.CNY;
-        } 
+        }
         return`
-        <div class="card shadow col-lg-3 col-sm-6 col-xs-12 filterDiv ${data.category}">
+        <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
             <img class="card-img-top img-fluid" src="${prodItem.image}">
             <div class="card-block">
                 <h5 class="card-title">${prodItem.title}</h4>
@@ -71,6 +72,7 @@ function updatePrice(data, country){
             </div>
         </div>
         `
+
     }).join("");
     
     /* Add item to cart*/
@@ -88,6 +90,35 @@ function updatePrice(data, country){
         })
     }
 
+}
+
+function filterResult(data, itemCategory){
+
+    let productListing = document.getElementById("products-listing");
+
+    var currencyType = 'SGD';
+    var currencySymbol = '$';
+
+    // All Products API
+    productListing.innerHTML = data
+    .map(prodItem => {
+        let itemCat = prodItem.category;
+        let totalPrice = prodItem.price; // defaults the current currency to SGD
+        if (itemCategory == itemCat || itemCategory == 'all'){
+            return`
+            <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
+                <img class="card-img-top img-fluid" src="${prodItem.image}">
+                <div class="card-block">
+                    <h5 class="card-title">${prodItem.title}</h4>
+                    <p class="card-text product-desc">${prodItem.description}</p>
+                    <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
+                    <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+                </div>
+            </div>
+            ` 
+        }
+    }).join("");
+    
 }
 
 function loadData(data){
@@ -110,11 +141,29 @@ function loadData(data){
         else if (this.id == 'rmb'){
             country = 'CN';
         }
-        
         updatePrice(data, country);
     });
-    console.log(data);
+    /* Filter button */
+    $('#all, #men, #women, #jewel, #electronics').click(function () {
+        if (this.id == 'all'){
+            itemCat = 'all';
+        }
+        else if (this.id == 'men') {
+            itemCat = 'men clothing';
+        }
+        else if (this.id == 'women'){
+            itemCat = 'women clothing';
+        }
+        else if (this.id == 'jewel'){
+            itemCat = 'jewelery';
+        }
+        else if (this.id == 'electronics'){
+            itemCat = 'electronics';
+        }
+        filterResult(data, itemCat)
+    }); 
     updatePrice(data, country);
+    
 }
 
 /* Local storage of the cart number/existing item in the cart */
@@ -184,84 +233,9 @@ function totalCost(product){
     
 }
 
-function displayCart(){
-    let cartItems = localStorage.getItem('productsInCart');
-
-    cartItems = JSON.parse(cartItems);
-    let productContainer = document.querySelector('.products');
-    let cartCost = localStorage.getItem('totalCost');
-    if (cartItems && productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
-        productContainer.innerHTML = '';
-        /* Looping through every values of the key productsInCart */
-        Object.values(cartItems).map(item => {
-            productContainer.innerHTML += `
-            <div class="product">
-                <ion-icon name="close-circle-outline"></ion-icon>
-                <img class="card-img-top img-fluid" src="${item.image}">
-                <span>${item.title}</span>
-            </div>
-            <div class="price">$${item.price}</div>
-            <div class="quantity">
-                <ion-icon name="caret-back-circle-outline"></ion-icon>
-                <span>${item.inCart}</span>
-                <ion-icon name="caret-forward-circle-outline"></ion-icon>
-            </div>
-            <div class="total">
-                $${item.inCart * item.price} 
-            </div>
-            `;
-        });
-
-        productContainer.innerHTML += `
-            <div class="basketContainer>
-                <h4 class="basketTotalName>
-                    Basket Total
-                    $${cartCost}
-                </h4>
-            </div>
-        `
-    }
-}
-
-function filterSelection(item){
-    var itemCat = document.getElementsByClassName('filterDiv');
-
-    if (item == 'all') item = "";
-
-    for (var i = 0; i < itemCat.length; i++){
-        removeDiv(itemCat[i], "show");
-        if (itemCat[i].className.indexOf(item) > -1) addDiv(itemCat[i], "show");
-    }
-}
-
-function removeDiv(element, name){
-    var first, second;
-
-    first = element.className.split(" ");
-    second = name.split(" ");
-
-    for (var i = 0; i < second.length; i++){
-        while (first.indexOf(second[i]) > -1){
-            first.splice(first.indexOf(second[i]), 1);
-        }
-    }
-    element.className = first.join(" ");
-}
-
-function addDiv(element, name){
-    var first, second;
-    first = element.className.split(" ");
-    second = name.split(" ");
-    for (var i = 0; i < second.length; i++) {
-      if (first.indexOf(second[i]) == -1) {element.className += " " + second[i];}
-    }
-}
-
 
 $(document).ready(function(){
     apiCurrency();
     apiStore();
     onLoadCartNumbers();
-    displayCart();
-    filterSelection("all")
 })

@@ -245,16 +245,15 @@ function totalCost(product){
 }
 
 function displayCart(){
-    let cartNumbers = localStorage.getItem('cartNumbers');
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.getElementById('cart-added-items');
     let cartCost = localStorage.getItem('totalCost');
-    if (cartItems && productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
+    if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         productContainer.innerHTML = '';
-        /* Looping through every values of the key productsInCart */
-        Object.values(cartItems).map(item => {
-            if (cartNumbers != 0){
+        if (cartItems != undefined){
+            /* Looping through every values of the key productsInCart */
+            Object.values(cartItems).map(item => {
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
@@ -266,18 +265,29 @@ function displayCart(){
                 </tr>
                 </tbody>
             `;
-            }      
-        });
-        productContainer.innerHTML += `
-        <div class="basketContainer>
-            <h4 class="basketTotalName>
-                Basket Total
-                $${cartCost}
-            </h4>
-        </div>
-        `
+            });    
+            productContainer.innerHTML += `
+            <div class="basketContainer>
+                <h4 class="basketTotalName>
+                    Basket Total
+                    $${cartCost}
+                </h4>
+            </div>
+            `
+        }
+        else{
+            productContainer.innerHTML += `
+            <div class="col-12 text-center d-flex align-items-center justify-content-center flex-wrap">
+                <div class="col-12">
+                    <img src="images/empty-cart.jpg" id="empty-cart-img" alt="Empty Cart" class="img-fluid">
+                </div>
+                <h2>There are no items in your cart presently.</h2>
+            </div>
+        `;
+        }  
     }
 }
+
 
 /* Form Submit RestDB */
 const APIKEY = "602c95cb5ad3610fb5bb6134";
