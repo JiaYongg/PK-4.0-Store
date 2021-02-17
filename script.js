@@ -269,7 +269,7 @@ function displayCart(){
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
-                    <td scope="row"><img src="${item.image}" width="100"><br>${item.title}</td>
+                    <td scope="row" class="d-flex flex-nowrap"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${item.price}</td>
                     <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
                     <td>${item.price * item.inCart}</td>

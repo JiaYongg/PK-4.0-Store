@@ -9,3 +9,7 @@
 .empty-cart {
     display: none;
 }
+
+.cart-prod-img {
+    max-width: 100px;
+}
