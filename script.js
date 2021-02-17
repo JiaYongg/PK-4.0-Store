@@ -325,6 +325,7 @@ function displayCart(country){
             `
         }
         else{
+            $('#product-loader').hide();
             productContainer.innerHTML += `
             <div class="col-12 text-center d-flex align-items-center justify-content-center flex-wrap">
                 <div class="col-12">

@@ -89,7 +89,7 @@ function updatePrice(data, country){
 }
 
 function filterResult(data, itemCategory, country){
-
+    console.log(itemCategory);
     let productListing = document.getElementById("products-listing");
 
     var currencyType = 'SGD';
@@ -159,8 +159,10 @@ function loadData(data){
         }
         updatePrice(data, country);
     });
-/* debugging required
+    updatePrice(data, country);
+
     var homepageFilter = localStorage.getItem('trigger');
+    localStorage.setItem('trigger', 'all');
 
     if (homepageFilter == "jewels") {
         itemCat = 'jewelery';
@@ -174,7 +176,8 @@ function loadData(data){
     else {
         itemCat = 'all';
     }
-    */
+    filterResult(data, itemCat, country);
+    
 
     /* Filter button */
     $('#all, #men, #women, #jewel, #electronics').click(function () {
@@ -195,7 +198,7 @@ function loadData(data){
         }
         filterResult(data, itemCat, country);
     });
-    updatePrice(data, country);
+    
     
 }
 
