@@ -304,7 +304,7 @@ function displayCart(country){
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
-                    <td scope="row" class="d-flex flex-nowrap"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
+                    <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
                     <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
                     <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
@@ -316,10 +316,10 @@ function displayCart(country){
             cartFooter.innerHTML = `
             <div class="container">
                 <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
-                    <h4 class="basketTotalName">
+                    <p class="basketTotalName">
                         Basket Total
                         ${currencySymbol}${totalCartCost.toFixed(2)} ${currencyType}
-                    </h4>
+                    </p>
                 </div>
             </div>
 

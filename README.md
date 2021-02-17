@@ -104,6 +104,10 @@ Live Demo:
 * Fonts
   * **Google Fonts** - Karla, Montserrat, Playfair Display, Work Sans, Open Sans
 * Media
+  * Preloader
+
+  * Cart & Products Loader
+    * Adrien Bourmault, Spinner Loading, LottieFiles - Retrieved from https://lottiefiles.com/528-spinner-loading
   * Cart Icon
     * Dannie Wulff Madsen, Cart Checkout - Fast, LottieFiles, Retrieved from https://lottiefiles.com/4914-cart-checkout-fast
   * Image in About Section
