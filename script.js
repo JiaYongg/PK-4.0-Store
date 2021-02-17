@@ -279,6 +279,48 @@ function displayCart(){
     }
 }
 
+/* Form Submit RestDB */
+const APIKEY = "602c95cb5ad3610fb5bb6134";
+$("#contact-submit").on("click", function(e){
+    e.preventDefault();
+
+    let name = $("#contact-name").val();
+    let contactNum = $("#contact-num").val();
+    let email = $("#contact-email").val();
+    let message = $("#contact-msg").val();
+
+    let data = {
+        "name" : name,
+        "contactNum" : contactNum,
+        "email" : email,
+        "message" : message
+    };
+
+    let settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://idassignment3-cc34.restdb.io/rest/contact",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(data),
+        "beforeSend": function(){
+          $("#contact-submit").prop( "disabled", true);
+          $("#contact-form").trigger("reset");
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        alert("Message send sucessfully.");
+        $("#contact-submit").prop( "disabled", false);
+    });
+})
+
 $(document).ready(function(){
     apiCurrency();
     apiStore();
