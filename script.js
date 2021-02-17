@@ -137,10 +137,11 @@ function updatePrice(data, country){
             lottie.play();
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
-            totalCost(data[i]);
+            totalCost(data[i]);         
         })
+        
     }
-
+    
     for (let i=5; i < carts.length; i++){
         carts[i].addEventListener('click', (event) =>{
             event.preventDefault();
@@ -175,8 +176,9 @@ function loadData(data){
         }
         
         updatePrice(data, country);
+        displayCart(country);
     });
-
+    displayCart(country);
     updatePrice(data, country);
 }
 
@@ -246,11 +248,15 @@ function totalCost(product){
     }
 }
 
-function displayCart(){
+function displayCart(country){
+    var currencyType = 'SGD';
+    var currencySymbol = '$';
+    
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.getElementById('cart-added-items');
     let cartCost = localStorage.getItem('totalCost');
+    let totalCartCost = cartCost;
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         productContainer.innerHTML = '';
         if (cartItems != undefined){
@@ -267,24 +273,49 @@ function displayCart(){
             `
             /* Looping through every values of the key productsInCart */
             Object.values(cartItems).map(item => {
+                let totalPrice = item.price;
+                $('#product-loader').hide();
+                if (country == 'US'){
+                    currencyType = 'USD';
+                    totalPrice = item.price * currencyRate.USD;
+                    totalCartCost = cartCost * currencyRate.USD;
+                }  
+                else if (country == 'JP'){
+                    currencyType = 'Yen';
+                    currencySymbol = '¥';
+                    totalPrice = item.price * currencyRate.JPY;
+                    totalCartCost = cartCost * currencyRate.JPY;
+                }
+                else if (country == 'KR'){
+                    currencyType = 'Won';
+                    currencySymbol = '₩';
+                    totalPrice = item.price * currencyRate.KRW;
+                    totalCartCost = cartCost * currencyRate.KRW;
+                }
+                else if (country == 'CN'){
+                    currencyType = 'RMB';
+                    currencySymbol = '元';
+                    totalPrice = item.price * currencyRate.CNY;
+                    totalCartCost = cartCost * currencyRate.CNY;
+                } 
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
                     <td scope="row" class="d-flex flex-nowrap"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
-                    <td>${item.price}</td>
+                    <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
                     <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
-                    <td>${item.price * item.inCart}</td>
+                    <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
                     <td><button id='remove-item'>X</button></td>
                 </tr>
                 </tbody>
             `;
-            });    
+            });  
             productContainer.innerHTML += `
             <div class="container">
                 <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
                     <h4 class="basketTotalName">
                         Basket Total
-                        $${cartCost}
+                        ${currencySymbol}${totalCartCost.toFixed(2)} ${currencyType}
                     </h4>
                 </div>
             </div>
@@ -353,7 +384,6 @@ $(document).ready(function(){
     apiCurrency();
     apiStore();
     onLoadCartNumbers();
-    displayCart();
 })
 
 
