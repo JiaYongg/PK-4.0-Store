@@ -240,7 +240,7 @@ function totalCost(product){
     let cartCost = localStorage.getItem('totalCost');
 
     if (cartCost != null){
-        cartCost = parseInt(cartCost); // Converts from string to integer as local storage always returns a string
+        cartCost = parseFloat(cartCost); // Converts from string to float as local storage always returns a string
         localStorage.setItem('totalCost', cartCost + product.price);
     }
     else{
@@ -254,8 +254,9 @@ function displayCart(country){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.getElementById('cart-added-items');
+    let cartFooter = document.getElementById('cart-footer');
     let cartCost = localStorage.getItem('totalCost');
-    let totalCartCost = parseInt(cartCost);
+    let totalCartCost = parseFloat(cartCost);
     //console.log(typeof cartCost);
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         var currencyType = 'SGD';
@@ -312,7 +313,7 @@ function displayCart(country){
                 </tbody>
             `;
             });  
-            productContainer.innerHTML += `
+            cartFooter.innerHTML = `
             <div class="container">
                 <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
                     <h4 class="basketTotalName">
