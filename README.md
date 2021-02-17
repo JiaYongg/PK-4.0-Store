@@ -105,7 +105,7 @@ Live Demo:
   * **Google Fonts** - Karla, Montserrat, Playfair Display, Work Sans, Open Sans
 * Media
   * Preloader
-
+    * MATI UR REHMAN, ECOMMERCE STORE, LottieFiles - Retrieved from https://lottiefiles.com/34612-ecommerce-store
   * Cart & Products Loader
     * Adrien Bourmault, Spinner Loading, LottieFiles - Retrieved from https://lottiefiles.com/528-spinner-loading
   * Cart Icon
@@ -137,4 +137,5 @@ Live Demo:
   * [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 * Product Cards in Homepage
   * [Horizontal Scroll Carousel, Tripp W.](https://codepen.io/zepzia/pen/JMZovd)
-* 
+* W3Schools Filter Element
+  * [Filter Elements](https://www.w3schools.com/howto/howto_js_filter_elements.asphttps://www.w3schools.com/howto/howto_js_filter_elements.asp)
