@@ -249,15 +249,17 @@ function totalCost(product){
 }
 
 function displayCart(country){
-    var currencyType = 'SGD';
-    var currencySymbol = '$';
-    
+
+
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.getElementById('cart-added-items');
     let cartCost = localStorage.getItem('totalCost');
-    let totalCartCost = cartCost;
+    let totalCartCost = parseInt(cartCost);
+    //console.log(typeof cartCost);
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
+        var currencyType = 'SGD';
+        var currencySymbol = '$';
         productContainer.innerHTML = '';
         if (cartItems != undefined){
             productContainer.innerHTML += `
@@ -297,7 +299,7 @@ function displayCart(country){
                     currencySymbol = '元';
                     totalPrice = item.price * currencyRate.CNY;
                     totalCartCost = cartCost * currencyRate.CNY;
-                } 
+                }
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
