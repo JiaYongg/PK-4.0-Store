@@ -129,10 +129,12 @@ function updatePrice(data, country){
     /* Variables to check if object already in cart */
     var inCart = 'inCart';
     var inCartCount = 0;
+    let lottie = document.getElementById("cartLottie");
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < 5; i++){
         carts[i].addEventListener('click', (event) =>{
             event.preventDefault();
+            lottie.play();
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);
@@ -266,12 +268,15 @@ function displayCart(){
             `;
             });    
             productContainer.innerHTML += `
-            <div class="basketContainer>
-                <h4 class="basketTotalName>
-                    Basket Total
-                    $${cartCost}
-                </h4>
+            <div class="container">
+                <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
+                    <h4 class="basketTotalName">
+                        Basket Total
+                        $${cartCost}
+                    </h4>
+                </div>
             </div>
+
             `
         }
         else{
