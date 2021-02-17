@@ -175,8 +175,8 @@ function loadData(data){
             country = 'CN';
         }
         
-        updatePrice(data, country);
         displayCart(country);
+        updatePrice(data, country);
     });
     displayCart(country);
     updatePrice(data, country);
