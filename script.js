@@ -253,18 +253,20 @@ function displayCart(){
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         productContainer.innerHTML = '';
         if (cartItems != undefined){
+            productContainer.innerHTML += `
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Remove</th>
+            </tr>
+            </thead>
+            `
             /* Looping through every values of the key productsInCart */
             Object.values(cartItems).map(item => {
                 productContainer.innerHTML += `
-                <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Remove</th>
-                </tr>
-                </thead>
                 <tbody id="cart-added-items">
                 <tr>
                     <td scope="row"><img src="${item.image}" width="100"><br>${item.title}</td>
