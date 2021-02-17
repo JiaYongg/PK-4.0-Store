@@ -77,18 +77,18 @@ Live Demo:
 * Adobe Photoshop
   * Adobe Photoshop was used to create and resize the graphical medias used in the site.
 ### Scripts Used
-* [Script Name](http://www.scriptlink.com)
-  * Description
+* [Lottie Player](https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js)
+  * Lottie-Player.js is embedded and utilized for the animations used in the site such as the cart icon and the preloaders.
 
 ### API Used
-* [API Name](http://www.APILink.com)
-  * API Description
+* [RestDB](https://restdb.io/)
+  * RestDB API is used for the storage and database of the contact form submissions. No GET requests are made as the platform to display the form submissions are not implemented. However, every form submissions are POST to the RestDB database.
 
-* [API Name](http://www.APILink.com)
-  * API Description
+* [Exchange Rate API](https://exchangeratesapi.io/)
+  * ExchangeRate API is used for the conversion of the original products price retrieved through the FakeStore API.
 
-* [API Name](http://www.APILink.com)
-  * API Description
+* [FakeStore API](https://fakestoreapi.com/)
+  * FakeStore API is used and utilized for the generation of the products.  The products are used as a mock products for our eCommerce website.
 
 ## Testing
   ### Desktop
@@ -103,17 +103,34 @@ Live Demo:
   * [jQuery](https://jquery.com/)
 * Fonts
   * **Google Fonts** - Karla, Montserrat, Playfair Display, Work Sans, Open Sans
-* Credit 1
-  * [siteName](https://www.site.com)
-* Credit 1
-  * [siteName](https://www.site.com)
-* Credit 1
-  * [siteName](https://www.site.com)
 * Media
-  * Countries Icon
-    * Freepik, Global Icon, Retrieved from https://www.flaticon.com/free-icon/world_52349?term=global&page=1&position=11&related_item_id=52349
-    * Freepik, Country Flags, Retrieved from https://www.flaticon.com/packs/country-flags?k=1609656054883
+  * Cart Icon
+    * Dannie Wulff Madsen, Cart Checkout - Fast, LottieFiles, Retrieved from https://lottiefiles.com/4914-cart-checkout-fast
+  * Image in About Section
+    * jcomb, Online Shopping Banner Mobile App Template, Freepik, Retrieved from https://www.freepik.com/free-vector/online-shopping-banner-mobile-app-templates-concept-flat-design_11878916.htm#page=1&query='Shopping&position=41
+  * Original Jewelries Category Grid in Homepage
+    * Freepik, Freepik, Retrieved from https://www.freepik.com/free-vector/yellow-gray-paper-style-background_11906897.htm#page=2&query=yellow+abstract&position=4
+  * Original Men Category Grid in Homepage
+    * starline, Freepik, Retrieved from https://www.freepik.com/free-vector/modern-wavy-shapes-abstract-curvy-stylish-background_8866250.htm#page=2&query=blue+abstract&position=44
+  * Icons in Contact Section
+    * Freepik, Freepik, Retrieved from https://www.flaticon.com/packs/apple-logos-2
+  * Country Flags
+    * Wikimedia, Singapore Flag, Retrieved from https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Singapore.svg/1200px-Flag_of_Singapore.svg.png
+    * Renewable Energy, USA Flag, Retrieved from https://renewableenergyupdates.in/wp-content/uploads/2020/09/USA-1.jpg
+    * Country Flags, Japan Flag, Retrieved from https://www.countryflags.com/wp-content/uploads/japan-flag-png-xl.png
+    * Country Flags, Korea Flag, Retrieved from https://www.countryflags.com/wp-content/uploads/south-korea-flag-png-xl.png
+    * Flagpedia, China Flag, Retrieved from https://flagpedia.net/data/flags/w580/cn.png
+  * Empty Cart Image
+    * Vector Juice, Freepik, Retrieved from https://www.freepik.com/free-vector/removing-goods-from-basket-refusing-purchase-changing-decision-item-deletion-emptying-trash-online-shopping-app-laptop-user-cartoon-character_11669671.htm#page=1&query=Empty%20Cart&position=8
+  * Original Creation
+    * Logo - TeamPK
+    * Banner No. 1
+  * Images of Products belongs to:
+    * FakeStore API.
   
 ## References & Acknowledgments
-* Title
-  * [siteName](https://www.site.com)
+* Bootstrap Documentation
+  * [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* Product Cards in Homepage
+  * [Horizontal Scroll Carousel, Tripp W.](https://codepen.io/zepzia/pen/JMZovd)
+* 
