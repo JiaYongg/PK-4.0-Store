@@ -1,3 +1,10 @@
+#preloader{
+  max-width: 80%;
+  margin: 14% auto;
+  justify-content: center;
+  display: flex;
+}
+
 .card {
     background-color: rgba(255, 255, 255,0.8);
     margin: 15px 10px;

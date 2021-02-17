@@ -1,6 +1,16 @@
 /* Global var */
 var currencyRate;
 
+/* PreLoader */
+function myFunction(){
+    setTimeout(showPage, 3000)
+}
+
+function showPage(){
+    document.getElementById("preloader").style.display = "none";
+    document.getElementById("overall_content").style.display = "block";
+}
+
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')

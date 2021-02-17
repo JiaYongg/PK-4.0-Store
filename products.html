@@ -15,8 +15,15 @@
     </head>
     <!--End of Head-->
     <!--Start of Body-->
-    <body>
-        <div>
+    <body onload="myFunction()">
+        <div class="container-fluid preloader-overlay text-center">
+            <div class="s-container col-lg-12 mr-auto">
+              <div class="preloader-container" id="preloader">
+                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_wdgehveh.json"  background="transparent"  speed="1.5"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>  
+              </div>
+            </div>
+        </div>
+        <div id="overall_content" style="display: none;">
             <!--Start of Header-->
             <header class="sticky-top">
                 <div class="container-fluid px-0">
