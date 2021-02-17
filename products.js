@@ -58,6 +58,7 @@ function updatePrice(data, country){
             currencySymbol = '元';
             totalPrice = prodItem.price * currencyRate.CNY;
         }
+        $('#product-loader').hide();
         return`
         <div class="card shadow col-lg-3 col-sm-6 col-xs-12">
             <img class="card-img-top img-fluid" src="${prodItem.image}">
