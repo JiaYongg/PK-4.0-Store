@@ -21,7 +21,6 @@ function apiCurrency(){
     .catch(err => console.log(err.message));
 }
 
-
 /* Item API */
 function apiStore(){
     fetch('https://fakestoreapi.com/products')
@@ -100,6 +99,7 @@ function filterResult(data, itemCategory, country){
     .map(prodItem => {
         let itemCat = prodItem.category;
         let totalPrice = prodItem.price; // defaults the current currency to SGD
+
         if (itemCategory == itemCat || itemCategory == 'all'){
             if (country == 'US'){
                 currencyType = 'USD';
@@ -158,6 +158,23 @@ function loadData(data){
         }
         updatePrice(data, country);
     });
+/* debugging required
+    var homepageFilter = localStorage.getItem('trigger');
+
+    if (homepageFilter == "jewels") {
+        itemCat = 'jewelery';
+    }
+    else if (homepageFilter == "men") {
+        itemCat = 'men clothing';
+    }
+    else if (homepageFilter == "women") {
+        itemCat = 'women clothing';
+    }
+    else {
+        itemCat = 'all';
+    }
+    */
+
     /* Filter button */
     $('#all, #men, #women, #jewel, #electronics').click(function () {
         if (this.id == 'all'){
@@ -176,7 +193,7 @@ function loadData(data){
             itemCat = 'electronics';
         }
         filterResult(data, itemCat, country);
-    }); 
+    });
     updatePrice(data, country);
     
 }

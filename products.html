@@ -15,15 +15,8 @@
     </head>
     <!--End of Head-->
     <!--Start of Body-->
-    <body onload="myFunction()">
-        <div class="container-fluid preloader-overlay text-center">
-            <div class="s-container col-lg-12 mr-auto">
-              <div class="preloader-container" id="preloader">
-                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_wdgehveh.json"  background="transparent"  speed="1.5"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>  
-              </div>
-            </div>
-        </div>
-        <div id="overall_content" style="display: none;">
+    <body>
+        <div>
             <!--Start of Header-->
             <header class="sticky-top">
                 <div class="container-fluid px-0">
@@ -68,11 +61,11 @@
                     <h1>Our Products</h1>
                 </div>
                 <div class="col-12 text-center" id="button-container">
-                    <button type="button" class="btn btn-sm btn-dark" id="all">All</button>
-                    <button type="button" class="btn btn-sm btn-primary" id="men">Men's</button>
-                    <button type="button" class="btn btn-sm btn-secondary" id="women">Women's</button>
-                    <button type="button" class="btn btn-sm btn-success" id="jewel">Jewelries</button>
-                    <button type="button" class="btn btn-sm btn-danger" id="electronics">Electronics</button>
+                    <button type="button" class="btn btn-sm btn-dark" onclick="filterSelection('all')">All</button>
+                    <button type="button" class="btn btn-sm btn-primary" onclick="filterSelection('men')">Men's</button>
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="filterSelection('women')">Women's</button>
+                    <button type="button" class="btn btn-sm btn-success" onclick="filterSelection('jewelries')">Jewelries</button>
+                    <button type="button" class="btn btn-sm btn-danger" onclick="filterSelection('electronics')">Electronics</button>
                 </div>
                 
                 <div class="row">
@@ -92,4 +85,3 @@
     </body>
     <!--End of Body-->
 </html>
-                        
