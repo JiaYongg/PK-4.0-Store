@@ -254,6 +254,15 @@ function displayCart(){
             /* Looping through every values of the key productsInCart */
             Object.values(cartItems).map(item => {
                 productContainer.innerHTML += `
+                <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Remove</th>
+                </tr>
+                </thead>
                 <tbody id="cart-added-items">
                 <tr>
                     <td scope="row"><img src="${item.image}" width="100"><br>${item.title}</td>
