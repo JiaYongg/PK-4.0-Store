@@ -35,6 +35,24 @@
     height: 225px;
 }
 
+@media only screen and (max-width: 991px) {
+    #jewelries-cat {
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    
+    #mens-clothing {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    #womens-clothing {
+        background-size:contain;
+        background-repeat: no-repeat;
+        text-align: right;
+    }
+}
+
 /* Featured Products */
 .card {
     background-color: rgba(255, 255, 255,0.8);
