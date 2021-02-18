@@ -221,7 +221,7 @@ function cartNumbers(product){
     console.log(product);
     let prodNumber = localStorage.getItem('cartNumbers');
 
-    prodNumber = parseInt(prodNumber); // Converts prodNumber to an integer from a string
+    prodNumber = parseFloat(prodNumber); // Converts prodNumber to an integer from a string
 
     if (prodNumber){ // if already exist in the local storage
         localStorage.setItem('cartNumbers', prodNumber + 1);
