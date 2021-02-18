@@ -274,7 +274,7 @@ function displayCart(country){
     let cartCost = localStorage.getItem('totalCost');
     let totalCartCost = parseFloat(cartCost);
     let cartNum = localStorage.getItem('cartNumbers');
-    
+    document.querySelector('#cart-items-int').textContent = cartNum;
     //console.log(typeof cartCost);
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         var currencyType = 'SGD';
@@ -324,7 +324,7 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td><ion-icon name="chevron-back-circle-outline" style="cursor: pointer;" id='left-quant' class='left-quant'></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline" style="cursor: pointer;" id='right-quant' class='right-quant'></ion-icon></td>
+                    <td><button id='left-quant' class='left-quant' style="cursor: pointer;" data-product-incart="${item.inCart}"><</button>${item.inCart}<button id='right-quant' class='right-quant' style="cursor: pointer;" data-product-incart="${item.inCart}">></button></td>
                     <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
                     <td><button id="remove-item" class="remove-item" data-product-id="${item.id}">X</button></td>
                 </tr>
@@ -370,28 +370,38 @@ function displayCart(country){
                 })
             }
 
-            var btnMinusQuant = document.getElementsByClassName('left-quant');
+            /* requires debugging */
+            // var btnMinusQuant = document.getElementsByClassName('left-quant');
     
-            for (var i = 0; i < btnMinusQuant.length; i++){
+            // for (var i = 0; i < btnMinusQuant.length; i++){
             
-                btnMinusQuant[i].addEventListener('click', function(){
-                    let itemsInCart = localStorage.getItem('productsInCart');
-                    let jsonItem = JSON.parse(itemsInCart);
-                    console.log(Object.values(jsonItem))
-                    for (var k = 0; Object.values(jsonItem).length; k++){
-
-                    }
-                })
-            }
+            //     btnMinusQuant[i].addEventListener('click', function(){
+            //         let itemsInCart = localStorage.getItem('productsInCart');
+            //         let jsonItem = JSON.parse(itemsInCart);
+            //         let prodInCart = this.getAttribute("data-product-incart");
+            //         console.log(prodInCart);
+            //         for (var k = 0; Object.values(jsonItem).length; k++){
+            //             console.log(Object.values(jsonItem)[k].inCart);
+            //             if (Object.values(jsonItem)[k].inCart >= 1){
+                            
+            //                 // localStorage.setItem('productsInCart', Object.values(jsonItem)[k].inCart -= 1);
+            //                 // localStorage.setItem('totalCost', cartCost - (Object.values(jsonItem)[k].inCart * Object.values(jsonItem)[k].price));
+            //                 localStorage.setItem('cartNumbers', cartNum -Object.values(jsonItem)[k].inCart);
+            //                 displayCart(country);
+                            
+            //             }
+            //         }
+            //     })
+            // }
             
-            var btnPlusQuant = document.getElementsByClassName('right-quant');
+            // var btnPlusQuant = document.getElementsByClassName('right-quant');
             
-            for (var i = 0; i < btnMinusQuant.length; i++){
+            // for (var i = 0; i < btnMinusQuant.length; i++){
             
-                btnPlusQuant[i].addEventListener('click', function(){
-                    console.log("test3");
-                })
-            }
+            //     btnPlusQuant[i].addEventListener('click', function(){
+            //         console.log("test3");
+            //     })
+            // }
             $('#clear-cart').click(function(){
                 localStorage.clear();
                 window.location.href = 'cart.html';
