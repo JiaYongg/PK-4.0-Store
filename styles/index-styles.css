@@ -37,7 +37,7 @@
 
 @media only screen and (max-width: 991px) {
     #jewelries-cat {
-        background-size:cover;
+        background-size: cover;
         background-repeat: no-repeat;
     }
     
@@ -47,8 +47,9 @@
     }
     
     #womens-clothing {
-        background-size:contain;
+        background-size: cover;
         background-repeat: no-repeat;
+        background-position: center center;
         text-align: right;
     }
 }
