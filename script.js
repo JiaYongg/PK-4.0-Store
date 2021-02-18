@@ -398,7 +398,6 @@ $("#contact-submit").on("click", function(e){
 })
 
 
-
 $(document).ready(function(){
     apiCurrency();
     apiStore();
