@@ -196,6 +196,7 @@ function loadData(data){
         updatePrice(data, country);
     });
     displayCart(country);
+    
     updatePrice(data, country);
 }
 
@@ -272,6 +273,8 @@ function displayCart(country){
     let cartFooter = document.getElementById('cart-footer');
     let cartCost = localStorage.getItem('totalCost');
     let totalCartCost = parseFloat(cartCost);
+    let cartNum = localStorage.getItem('cartNumbers');
+    
     //console.log(typeof cartCost);
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         var currencyType = 'SGD';
@@ -321,24 +324,78 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td><ion-icon name="chevron-back-circle-outline" style="cursor: pointer;" id='left-quant'></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline" style="cursor: pointer;" id='right-quant'></ion-icon></td>
+                    <td><ion-icon name="chevron-back-circle-outline" style="cursor: pointer;" id='left-quant' class='left-quant'></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline" style="cursor: pointer;" id='right-quant' class='right-quant'></ion-icon></td>
                     <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
-                    <td><button id="remove-item" class="remove-item">X</button></td>
+                    <td><button id="remove-item" class="remove-item" data-product-id="${item.id}">X</button></td>
                 </tr>
                 </tbody>
             `;
-            });  
-            cartFooter.innerHTML = `
-            <div class="container">
-                <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
-                    <p class="basketTotalName">
-                        Basket Total
-                        ${currencySymbol}${totalCartCost.toFixed(2)} ${currencyType}
-                    </p>
+            });
+            if (cartNum){
+                cartFooter.innerHTML = `
+                <div class="container">
+                    <button id='clear-cart'>Clear Cart</button>
+                    <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
+                        <p class="basketTotalName">
+                            Basket Total
+                            ${currencySymbol}${totalCartCost.toFixed(2)} ${currencyType}
+                        </p>
+                    </div>
                 </div>
-            </div>
+    
+                `
+            } 
 
-            `
+            var btnRemove = document.getElementsByClassName('remove-item');
+            
+            for (var i = 0; i < btnRemove.length; i++){
+                btnRemove[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    let prodId = this.getAttribute("data-product-id");
+                    for (var k = 0; k < Object.values(jsonItem).length; k++){
+                        if (prodId == Object.values(jsonItem)[k].id){
+                            console.log(jsonItem);
+                            localStorage.setItem('totalCost', cartCost - (jsonItem[prodId].inCart * jsonItem[prodId].price));
+                            localStorage.setItem('cartNumbers', cartNum -jsonItem[prodId].inCart);
+                            delete jsonItem[prodId];
+                            localStorage.setItem('productsInCart', JSON.stringify(jsonItem));
+                            if (localStorage.getItem('cartNumbers') == 0){
+                                localStorage.clear();
+                            }
+                            displayCart(country);
+                            break;
+                        }
+                    }
+                })
+            }
+
+            var btnMinusQuant = document.getElementsByClassName('left-quant');
+    
+            for (var i = 0; i < btnMinusQuant.length; i++){
+            
+                btnMinusQuant[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    console.log(Object.values(jsonItem))
+                    for (var k = 0; Object.values(jsonItem).length; k++){
+
+                    }
+                })
+            }
+            
+            var btnPlusQuant = document.getElementsByClassName('right-quant');
+            
+            for (var i = 0; i < btnMinusQuant.length; i++){
+            
+                btnPlusQuant[i].addEventListener('click', function(){
+                    console.log("test3");
+                })
+            }
+            $('#clear-cart').click(function(){
+                localStorage.clear();
+                window.location.href = 'cart.html';
+            })
         }
         else{
             $('#product-loader').hide();
@@ -350,8 +407,10 @@ function displayCart(country){
                 <h2>There are no items in your cart presently.</h2>
             </div>
         `;
+            cartFooter.innerHTML = ``;
         }  
     }
+    
 }
 
 
@@ -424,24 +483,4 @@ var women = document.getElementById('womens-clothing');
 women.addEventListener('click', function(){
     localStorage.setItem('trigger', 'women')
     window.location.href = 'products.html'
-})
-
-/* requires debugging */
-var btnRemove = document.getElementById('remove-item');
-
-btnRemove.addEventListener('click', function(){
-    let removeItem = localStorage.getItem('productsInCart') // remove the key inside of productsInCart variable
-    console.log("test");
-})
-
-var btnMinusQuant = document.getElementById('left-quant');
-
-btnMinusQuant.addEventListener('click', function(){
-    console.log("test2");
-})
-
-var btnPlusQuant = document.getElementById('right-quant');
-
-btnPlusQuant.addEventListener('click', function(){
-    console.log("test3");
 })
