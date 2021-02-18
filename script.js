@@ -284,11 +284,11 @@ function displayCart(country){
             productContainer.innerHTML += `
             <thead>
             <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
-                <th scope="col">Remove</th>
+                <th scope="col-4">Product</th>
+                <th scope="col-2">Price</th>
+                <th scope="col-2">Quantity</th>
+                <th scope="col-2">Total</th>
+                <th scope="col-2">Remove</th>
             </tr>
             </thead>
             `
@@ -322,11 +322,11 @@ function displayCart(country){
                 productContainer.innerHTML += `
                 <tbody id="cart-added-items">
                 <tr>
-                    <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
-                    <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td class="text-center">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">+</button></td>
-                    <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
-                    <td class="text-center"><button id="remove-item" class="remove-item btn-sm btn-dark" data-product-id="${item.id}">X</button></td>
+                    <td scope="row" class="col-4"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
+                    <td class="col-2">${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
+                    <td class="col-2">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">+</button></td>
+                    <td class="col-2">${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
+                    <td class="col-2"><button id="remove-item" class="remove-item btn-sm btn-dark" data-product-id="${item.id}">X</button></td>
                 </tr>
                 </tbody>
             `;
