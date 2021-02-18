@@ -69,7 +69,7 @@ function updatePrice(data, country){
             }  
             return`
             <div class="card shadow">
-                <img class="card-img-top img-fluid" src="${topItem.image}">
+                <img class="card-img-top img-fluid draggable" src="${topItem.image}">
                 <div class="card-block">
                         <h5 class="card-title">${topItem.title}</h4>
                         <p class="card-text product-desc">${topItem.description}</p>
@@ -110,7 +110,7 @@ function updatePrice(data, country){
             }  
             return`
             <div class="card shadow">
-                <img class="card-img-top img-fluid" src="${newItem.image}">
+                <img class="card-img-top img-fluid draggable" src="${newItem.image}">
                 <div class="card-block">
                         <h5 class="card-title">${newItem.title}</h4>
                         <p class="card-text product-desc">${newItem.description}</p>
@@ -139,8 +139,25 @@ function updatePrice(data, country){
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);         
         })
-        
     }
+
+    // $('.draggable').draggable({
+    //     containment: 'document',
+    //     helper : 'clone',
+    //     zindex : 10000,
+    //     appendTo : 'body',
+    //     start : function(event, ui){
+    //         $(ui.helper).css('width', '10%');
+    //     },
+    //     stop : function(event, ui){
+    //         $(ui.helper).css('width', '100%');
+    //     },
+    // });
+    // $('.droppable').droppable({
+    //     drop : function(event, ui){
+    //         cartNumbers;
+    //     }
+    // })
     
     for (let i=5; i < carts.length; i++){
         carts[i].addEventListener('click', (event) =>{
@@ -249,8 +266,6 @@ function totalCost(product){
 }
 
 function displayCart(country){
-
-
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productContainer = document.getElementById('cart-added-items');
@@ -306,9 +321,9 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td><ion-icon name="chevron-back-circle-outline"></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline"></ion-icon></td>
+                    <td><ion-icon name="chevron-back-circle-outline" style="cursor: pointer;" id='left-quant'></ion-icon>${item.inCart}<ion-icon name="chevron-forward-circle-outline" style="cursor: pointer;" id='right-quant'></ion-icon></td>
                     <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
-                    <td><button id='remove-item'>X</button></td>
+                    <td><button id="remove-item" class="remove-item">X</button></td>
                 </tr>
                 </tbody>
             `;
@@ -410,4 +425,24 @@ var women = document.getElementById('womens-clothing');
 women.addEventListener('click', function(){
     localStorage.setItem('trigger', 'women')
     window.location.href = 'products.html'
+})
+
+/* requires debugging */
+var btnRemove = document.getElementById('remove-item');
+
+btnRemove.addEventListener('click', function(){
+    let removeItem = localStorage.getItem('productsInCart') // remove the key inside of productsInCart variable
+    console.log("test");
+})
+
+var btnMinusQuant = document.getElementById('left-quant');
+
+btnMinusQuant.addEventListener('click', function(){
+    console.log("test2");
+})
+
+var btnPlusQuant = document.getElementById('right-quant');
+
+btnPlusQuant.addEventListener('click', function(){
+    console.log("test3");
 })

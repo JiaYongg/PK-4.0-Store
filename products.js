@@ -135,6 +135,20 @@ function filterResult(data, itemCategory, country){
         }
     }).join("");
     
+    /* Add item to cart*/
+    let carts = document.querySelectorAll('.add-item-cart');
+    /* Variables to check if object already in cart */
+    var inCart = 'inCart';
+    var inCartCount = 0;
+    /* When the add to cart button is clicked, increase the local storage cart count by 1 */
+    for (let i=0; i < carts.length; i++){
+        carts[i].addEventListener('click', (event) =>{
+            event.preventDefault();
+            (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
+            cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
+            totalCost(data[i]);
+        })
+    }
 }
 
 function loadData(data){
@@ -160,6 +174,7 @@ function loadData(data){
         updatePrice(data, country);
     });
     updatePrice(data, country);
+    
 
     var homepageFilter = localStorage.getItem('trigger');
     localStorage.setItem('trigger', 'all');
@@ -177,7 +192,6 @@ function loadData(data){
         itemCat = 'all';
     }
     filterResult(data, itemCat, country);
-    
 
     /* Filter button */
     $('#all, #men, #women, #jewel, #electronics').click(function () {
@@ -259,7 +273,7 @@ function totalCost(product){
     let cartCost = localStorage.getItem('totalCost');
 
     if (cartCost != null){
-        cartCost = parseInt(cartCost); // Converts from string to integer as local storage always returns a string
+        cartCost = parseFloat(cartCost); // Converts from string to integer as local storage always returns a string
         localStorage.setItem('totalCost', cartCost + product.price);
     }
     else{
