@@ -324,9 +324,9 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class=""><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td><button id='left-quant' class='left-quant' style="cursor: pointer;" data-product-incart="${item.inCart}"><</button>${item.inCart}<button id='right-quant' class='right-quant' style="cursor: pointer;" data-product-incart="${item.inCart}">></button></td>
+                    <td class="text-center">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">+</button></td>
                     <td>${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
-                    <td><button id="remove-item" class="remove-item" data-product-id="${item.id}">X</button></td>
+                    <td class="text-center"><button id="remove-item" class="remove-item btn-sm btn-dark" data-product-id="${item.id}">X</button></td>
                 </tr>
                 </tbody>
             `;
@@ -334,10 +334,10 @@ function displayCart(country){
             if (cartNum){
                 cartFooter.innerHTML = `
                 <div class="container">
-                    <button id='clear-cart'>Clear Cart</button>
+                    <button id='clear-cart' class="btn-dark btn-sm">Clear Cart</button>
                     <div class="basketContainer col-12 d-flex flex-wrap justify-content-end">
                         <p class="basketTotalName">
-                            Basket Total
+                            <strong>Basket Total</strong><br/>
                             ${currencySymbol}${totalCartCost.toFixed(2)} ${currencyType}
                         </p>
                     </div>
