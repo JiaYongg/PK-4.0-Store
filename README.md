@@ -31,7 +31,7 @@ Live Demo:
 > [https://jordanchoi.github.io/ID_Team1PK4.0_Website/](https://jordanchoi.github.io/ID_Team1PK4.0_Website/)
 
 Pitching Video:
-> [https://drive.google.com/file/d/1H4iskBvca3EJ3lAoFpRZblA1OuzgLXeO/view](https://drive.google.com/file/d/1H4iskBvca3EJ3lAoFpRZblA1OuzgLXeO/viewhttps://drive.google.com/file/d/1H4iskBvca3EJ3lAoFpRZblA1OuzgLXeO/view)
+> [https://drive.google.com/file/d/1H4iskBvca3EJ3lAoFpRZblA1OuzgLXeO/view?usp=sharing](https://drive.google.com/file/d/1H4iskBvca3EJ3lAoFpRZblA1OuzgLXeO/view?usp=sharing)
 ## Features
 ### Existing Features in the Website
 1. Responsive Design 
