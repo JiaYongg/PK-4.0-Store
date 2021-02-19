@@ -442,7 +442,7 @@ $("#contact-submit").on("click", function(event){
 
     $.ajax(settings).done(function (response) {
         console.log(response);
-        alert("Message send sucessfully.");
+        alert("Message sent successfully.");
         $("#contact-submit").prop( "disabled", false);
     });
 })
