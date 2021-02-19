@@ -95,7 +95,7 @@ Live Demo:
   ![Manual Test Case](Testing/Desktop-Testing.png)
 
   ### Mobile
-  ![Manual Test Case Mobile](testing\Testing/Mobile-Testing.png)
+  ![Manual Test Case Mobile](Testing/Mobile-Testing.png)
 ## Credits
 * Framework
   * [Bootstrap 5.0](https://getbootstrap.com/)
