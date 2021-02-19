@@ -1,12 +1,10 @@
 /* Tooltip Enable */
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+  return new bootstrap.Tooltip(tooltipTriggerEl);
 })
-
 /* Global var */
 var currencyRate;
-
 /* PreLoader */
 function myFunction(){
     setTimeout(showPage, 3000)
@@ -16,7 +14,6 @@ function showPage(){
     document.getElementById("preloader").style.display = "none";
     document.getElementById("overall_content").style.display = "block";
 }
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')
@@ -26,7 +23,6 @@ function apiCurrency(){
     })
     .catch(err => console.log(err.message));
 }
-
 /* Item API */
 function apiStore(){
     fetch('https://fakestoreapi.com/products')
@@ -38,7 +34,6 @@ function apiStore(){
 function updatePrice(data, country){
     let topProducts = document.getElementById("top-products");
     let newArrivals = document.getElementById("new-arrivals");
-
     var currencyType = 'SGD';
     var currencySymbol = '$';
     //Top Products API
@@ -77,11 +72,9 @@ function updatePrice(data, country){
                         <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
                 </div>
             </div>
-            `  
-            
+            `;
         }        
     }).join("");
-
     //New Arrivals API 
     newArrivals.innerHTML = data
     .map(newItem => {
@@ -118,12 +111,9 @@ function updatePrice(data, country){
                         <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
                 </div>
             </div>
-            ` 
-             
-            
+            `;
         }        
     }).join("");
-
     /* Add item to cart*/
     let carts = document.querySelectorAll('.add-item-cart');
     /* Variables to check if object already in cart */
@@ -141,24 +131,6 @@ function updatePrice(data, country){
         })
     }
 
-    // $('.draggable').draggable({
-    //     containment: 'document',
-    //     helper : 'clone',
-    //     zindex : 10000,
-    //     appendTo : 'body',
-    //     start : function(event, ui){
-    //         $(ui.helper).css('width', '10%');
-    //     },
-    //     stop : function(event, ui){
-    //         $(ui.helper).css('width', '100%');
-    //     },
-    // });
-    // $('.droppable').droppable({
-    //     drop : function(event, ui){
-    //         cartNumbers;
-    //     }
-    // })
-    
     for (let i=5; i < carts.length; i++){
         carts[i].addEventListener('click', (event) =>{
             event.preventDefault();
@@ -169,7 +141,6 @@ function updatePrice(data, country){
         })
     }
 }
-
 
 function loadData(data){
     /* When the html tag with the ID of sgd, usd, jpy, krw or rmb is clicked, set country variable to their respective id
@@ -191,15 +162,12 @@ function loadData(data){
         else if (this.id == 'rmb'){
             country = 'CN';
         }
-        
         displayCart(country);
         updatePrice(data, country);
     });
     displayCart(country);
-    
     updatePrice(data, country);
 }
-
 /* Local storage of the cart number/existing item in the cart */
 function cartNumbers(product){
     console.log(product);
@@ -216,7 +184,6 @@ function cartNumbers(product){
         document.querySelector('#cart-items-int').textContent = 1
     }
     setItems(product);
-    
 }
 
 /* displays the number of items in the cart in the local storage upon loading */
@@ -275,7 +242,6 @@ function displayCart(country){
     let totalCartCost = parseFloat(cartCost);
     let cartNum = localStorage.getItem('cartNumbers');
     document.querySelector('#cart-items-int').textContent = cartNum;
-    //console.log(typeof cartCost);
     if (productContainer){ // Checks if there is any item in cart from local storage and if the product container exists
         var currencyType = 'SGD';
         var currencySymbol = '$';
@@ -291,7 +257,7 @@ function displayCart(country){
                 <th scope="col-2">Remove</th>
             </tr>
             </thead>
-            `
+            `;
             /* Looping through every values of the key productsInCart */
             Object.values(cartItems).map(item => {
                 let totalPrice = item.price;
@@ -324,12 +290,12 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class="col-4"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td class="col-2">${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td class="col-2">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">+</button></td>
+                    <td class="col-2">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-quant-id="${item.id}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-quant-id="${item.id}">+</button></td>
                     <td class="col-2">${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
                     <td class="col-2"><button id="remove-item" class="remove-item btn-sm btn-dark" data-product-id="${item.id}">X</button></td>
                 </tr>
                 </tbody>
-            `;
+                `;
             });
             if (cartNum){
                 cartFooter.innerHTML = `
@@ -342,8 +308,7 @@ function displayCart(country){
                         </p>
                     </div>
                 </div>
-    
-                `
+                `;
             } 
 
             var btnRemove = document.getElementsByClassName('remove-item');
@@ -369,39 +334,58 @@ function displayCart(country){
                     }
                 })
             }
-
-            /* requires debugging */
-            // var btnMinusQuant = document.getElementsByClassName('left-quant');
+            var btnMinusQuant = document.getElementsByClassName('left-quant');
     
-            // for (var i = 0; i < btnMinusQuant.length; i++){
+            for (var i = 0; i < btnMinusQuant.length; i++){
             
-            //     btnMinusQuant[i].addEventListener('click', function(){
-            //         let itemsInCart = localStorage.getItem('productsInCart');
-            //         let jsonItem = JSON.parse(itemsInCart);
-            //         let prodInCart = this.getAttribute("data-product-incart");
-            //         console.log(prodInCart);
-            //         for (var k = 0; Object.values(jsonItem).length; k++){
-            //             console.log(Object.values(jsonItem)[k].inCart);
-            //             if (Object.values(jsonItem)[k].inCart >= 1){
-                            
-            //                 // localStorage.setItem('productsInCart', Object.values(jsonItem)[k].inCart -= 1);
-            //                 // localStorage.setItem('totalCost', cartCost - (Object.values(jsonItem)[k].inCart * Object.values(jsonItem)[k].price));
-            //                 localStorage.setItem('cartNumbers', cartNum -Object.values(jsonItem)[k].inCart);
-            //                 displayCart(country);
-                            
-            //             }
-            //         }
-            //     })
-            // }
+                btnMinusQuant[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    let prodId = this.getAttribute("data-quant-id");
+                    for (var k = 0; Object.values(jsonItem).length; k++){
+                        if (prodId == Object.values(jsonItem)[k].id){
+                            console.log(jsonItem[prodId].inCart);
+                            jsonItem[prodId].inCart -= 1;
+                            localStorage.setItem('totalCost', cartCost - jsonItem[prodId].price);
+                            localStorage.setItem('cartNumbers', cartNum -=1);
+                            if (jsonItem[prodId].inCart == 0){
+                                delete jsonItem[prodId];
+                            }
+                            localStorage.setItem('productsInCart', JSON.stringify(jsonItem));
+                            if (localStorage.getItem('cartNumbers') == 0){
+                                localStorage.clear();
+                            }
+                            displayCart(country);
+                            break;
+                        }
+                    }
+                })
+            }
             
-            // var btnPlusQuant = document.getElementsByClassName('right-quant');
+            var btnPlusQuant = document.getElementsByClassName('right-quant');
             
-            // for (var i = 0; i < btnMinusQuant.length; i++){
+            for (var i = 0; i < btnMinusQuant.length; i++){
             
-            //     btnPlusQuant[i].addEventListener('click', function(){
-            //         console.log("test3");
-            //     })
-            // }
+                btnPlusQuant[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    let prodId = this.getAttribute("data-quant-id");
+                    for (var k = 0; Object.values(jsonItem).length; k++){
+                        if (prodId == Object.values(jsonItem)[k].id){
+                            console.log(jsonItem[prodId].inCart);
+                            jsonItem[prodId].inCart += 1;
+                            cartCost = parseFloat(cartCost); 
+                            localStorage.setItem('totalCost', cartCost += jsonItem[prodId].price);
+                            cartNum = parseInt(cartNum);
+                            localStorage.setItem('cartNumbers', cartNum += 1);
+                            localStorage.setItem('productsInCart', JSON.stringify(jsonItem));
+                            displayCart(country);
+                            break;
+                        }
+                    }
+                })
+            }
+
             $('#clear-cart').click(function(){
                 localStorage.clear();
                 window.location.href = 'cart.html';
@@ -416,18 +400,15 @@ function displayCart(country){
                 </div>
                 <h2>There are no items in your cart presently.</h2>
             </div>
-        `;
+            `;
             cartFooter.innerHTML = ``;
         }  
     }
-    
 }
-
-
 /* Form Submit RestDB */
 const APIKEY = "602c95cb5ad3610fb5bb6134";
-$("#contact-submit").on("click", function(e){
-    e.preventDefault();
+$("#contact-submit").on("click", function(event){
+    event.preventDefault();
 
     let name = $("#contact-name").val();
     let contactNum = $("#contact-num").val();
@@ -461,11 +442,10 @@ $("#contact-submit").on("click", function(e){
 
     $.ajax(settings).done(function (response) {
         console.log(response);
-        alert("Message send sucessfully.");
+        alert("Message sent successfully.");
         $("#contact-submit").prop( "disabled", false);
     });
 })
-
 
 $(document).ready(function(){
     apiCurrency();
@@ -473,7 +453,7 @@ $(document).ready(function(){
     onLoadCartNumbers();
 })
 
-
+/* Home Page image link to Products Page filtered result */
 var jewel = document.getElementById('jewelries-cat');
 
 jewel.addEventListener('click', function(){

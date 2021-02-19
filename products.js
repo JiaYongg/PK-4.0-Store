@@ -1,6 +1,5 @@
 /* Global var */
 var currencyRate;
-
 /* PreLoader */
 function myFunction(){
     setTimeout(showPage, 3000)
@@ -10,7 +9,6 @@ function showPage(){
     document.getElementById("preloader").style.display = "none";
     document.getElementById("overall_content").style.display = "block";
 }
-
 /* Currency API */
 function apiCurrency(){
     fetch('https://api.exchangeratesapi.io/latest?base=SGD')
@@ -20,7 +18,6 @@ function apiCurrency(){
     })
     .catch(err => console.log(err.message));
 }
-
 /* Item API */
 function apiStore(){
     fetch('https://fakestoreapi.com/products')
@@ -28,7 +25,6 @@ function apiStore(){
     .then(data=> loadData(data))
     .catch(err => console.log(err.message));
 }
-
 
 function updatePrice(data, country){
     let productListing = document.getElementById("products-listing");
@@ -66,7 +62,7 @@ function updatePrice(data, country){
                 <h5 class="card-title">${prodItem.title}</h4>
                 <p class="card-text product-desc">${prodItem.description}</p>
                 <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
-                <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+                <a href="#" class="btn btn-primary add-item-cart" data-prod-id="${prodItem.id}">Add to Cart</a>
             </div>
         </div>
         `
@@ -77,6 +73,8 @@ function updatePrice(data, country){
     /* Variables to check if object already in cart */
     var inCart = 'inCart';
     var inCartCount = 0;
+
+    
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < carts.length; i++){
         carts[i].addEventListener('click', (event) =>{
@@ -91,7 +89,6 @@ function updatePrice(data, country){
 function filterResult(data, itemCategory, country){
     console.log(itemCategory);
     let productListing = document.getElementById("products-listing");
-
     var currencyType = 'SGD';
     var currencySymbol = '$';
 
@@ -128,13 +125,12 @@ function filterResult(data, itemCategory, country){
                     <h5 class="card-title">${prodItem.title}</h4>
                     <p class="card-text product-desc">${prodItem.description}</p>
                     <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
-                    <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+                    <a href="#" class="btn btn-primary add-item-cart" data-button-id="${prodItem.id}">Add to Cart</a>
                 </div>
             </div>
             ` 
         }
     }).join("");
-    
     /* Add item to cart*/
     let carts = document.querySelectorAll('.add-item-cart');
     /* Variables to check if object already in cart */
@@ -143,12 +139,14 @@ function filterResult(data, itemCategory, country){
     let lottie = document.getElementById("cartLottie");
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < carts.length; i++){
-        carts[i].addEventListener('click', (event) =>{
+        carts[i].addEventListener('click', function(event){
+            let productId = this.getAttribute('data-button-id'); //gets the element from the button and store it into a variable
+            console.log(productId);
             event.preventDefault();
             lottie.play();
-            (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
-            cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
-            totalCost(data[i]);
+            (data[productId-1])[inCart] = inCartCount; // Adds the variables into the API JSON data
+            cartNumbers(data[productId-1]) // when button is clicked takes api data on the respective object/item that is being clicked.
+            totalCost(data[productId-1]);
         })
     }
 }
@@ -176,7 +174,6 @@ function loadData(data){
         updatePrice(data, country);
     });
     updatePrice(data, country);
-    
 
     var homepageFilter = localStorage.getItem('trigger');
     localStorage.setItem('trigger', 'all');
@@ -194,7 +191,6 @@ function loadData(data){
         itemCat = 'all';
     }
     filterResult(data, itemCat, country);
-
     /* Filter button */
     $('#all, #men, #women, #jewel, #electronics').click(function () {
         if (this.id == 'all'){
@@ -214,10 +210,7 @@ function loadData(data){
         }
         filterResult(data, itemCat, country);
     });
-    
-    
 }
-
 /* Local storage of the cart number/existing item in the cart */
 function cartNumbers(product){
     console.log(product);
@@ -234,7 +227,6 @@ function cartNumbers(product){
         document.querySelector('#cart-items-int').textContent = 1
     }
     setItems(product);
-    
 }
 /* displays the number of items in the cart in the local storage upon loading */
 function onLoadCartNumbers(){
@@ -281,10 +273,7 @@ function totalCost(product){
     else{
         localStorage.setItem('totalCost', product.price)
     }
-
-    
 }
-
 
 $(document).ready(function(){
     apiCurrency();
