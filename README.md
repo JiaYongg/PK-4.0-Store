@@ -3,17 +3,17 @@ This website is created for the third assignment of the Interactive Development 
 
 It is jointly developed and designed by Jordan Choi & Poh Jia Yong.
 
-Tutorial Group: T01
-Lecturer: Mr Andy Ng
-Team Number: 1
-Team Name: PK 4.0
+Tutorial Group: T01<br/>
+Lecturer: Mr Andy Ng<br/>
+Team Number: 1<br/>
+Team Name: PK 4.0<br/>
 
 This is our attempt to create an interactive eCommerce website, utilizing LottieFiles for animations, RestDB for storing the contact messages via the contact form and FakeStore API for generation of the mock products.
 
 The goal of this website is to mimic real-life shopping experience and creates an enjoyable, interactive experience to the users.
 
 ## Design Process & Rationale
-There are no specific users for this website, and anyone can uses it. This website utilizes FakeStore API for the list of products. The website is designed with a traditional layout imbued with animations, and modern design styles.
+There are no specific users for this website, and anyone can use it. This website utilizes FakeStore API for the list of products. The website is designed with a traditional layout imbued with animations, and modern design styles.
 
 ### Website’s Scope & Agenda:
 1. Mimics Real Life Shopping Experience
