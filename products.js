@@ -79,7 +79,6 @@ function updatePrice(data, country){
     for (let i=0; i < carts.length; i++){
         carts[i].addEventListener('click', (event) =>{
             event.preventDefault();
-            if (data[i].id == getAttribute("data-prod-id"))
             (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
             cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
             totalCost(data[i]);
@@ -126,7 +125,7 @@ function filterResult(data, itemCategory, country){
                     <h5 class="card-title">${prodItem.title}</h4>
                     <p class="card-text product-desc">${prodItem.description}</p>
                     <p class="card-text product-price"><big>${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</big></p>
-                    <a href="#" class="btn btn-primary add-item-cart">Add to Cart</a>
+                    <a href="#" class="btn btn-primary add-item-cart" data-button-id="${prodItem.id}">Add to Cart</a>
                 </div>
             </div>
             ` 
@@ -140,12 +139,14 @@ function filterResult(data, itemCategory, country){
     let lottie = document.getElementById("cartLottie");
     /* When the add to cart button is clicked, increase the local storage cart count by 1 */
     for (let i=0; i < carts.length; i++){
-        carts[i].addEventListener('click', (event) =>{
+        carts[i].addEventListener('click', function(event){
+            let productId = this.getAttribute('data-button-id'); //gets the element from the button and store it into a variable
+            console.log(productId);
             event.preventDefault();
             lottie.play();
-            (data[i])[inCart] = inCartCount; // Adds the variables into the API JSON data
-            cartNumbers(data[i]) // when button is clicked takes api data on the respective object/item that is being clicked.
-            totalCost(data[i]);
+            (data[productId-1])[inCart] = inCartCount; // Adds the variables into the API JSON data
+            cartNumbers(data[productId-1]) // when button is clicked takes api data on the respective object/item that is being clicked.
+            totalCost(data[productId-1]);
         })
     }
 }
