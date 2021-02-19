@@ -92,10 +92,10 @@ Live Demo:
 
 ## Testing
   ### Desktop
-  ![Manual Test Case](/linktotestcase)
+  ![Manual Test Case](Testing/Desktop-Testing.png)
 
   ### Mobile
-  ![Manual Test Case Mobile](/linktotestcase)
+  ![Manual Test Case Mobile](testing\Testing/Mobile-Testing.png)
 ## Credits
 * Framework
   * [Bootstrap 5.0](https://getbootstrap.com/)
