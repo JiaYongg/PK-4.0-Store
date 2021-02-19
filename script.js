@@ -324,7 +324,7 @@ function displayCart(country){
                 <tr>
                     <td scope="row" class="col-4"><img src="${item.image}" class="cart-prod-img img-fluid px-2"><br>${item.title}</td>
                     <td class="col-2">${currencySymbol}${totalPrice.toFixed(2)} ${currencyType}</td>
-                    <td class="col-2">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-product-incart="${item.inCart}">+</button></td>
+                    <td class="col-2">${item.inCart}<br/><button id='left-quant' class='left-quant btn-sm btn-dark' style="cursor: pointer;" data-quant-id="${item.id}">-</button> <button id='right-quant' class='right-quant btn-sm btn-dark' style="cursor: pointer;" data-quant-id="${item.id}">+</button></td>
                     <td class="col-2">${currencySymbol}${(totalPrice * item.inCart).toFixed(2)} ${currencyType}</td>
                     <td class="col-2"><button id="remove-item" class="remove-item btn-sm btn-dark" data-product-id="${item.id}">X</button></td>
                 </tr>
@@ -371,37 +371,59 @@ function displayCart(country){
             }
 
             /* requires debugging */
-            // var btnMinusQuant = document.getElementsByClassName('left-quant');
+            var btnMinusQuant = document.getElementsByClassName('left-quant');
     
-            // for (var i = 0; i < btnMinusQuant.length; i++){
+            for (var i = 0; i < btnMinusQuant.length; i++){
             
-            //     btnMinusQuant[i].addEventListener('click', function(){
-            //         let itemsInCart = localStorage.getItem('productsInCart');
-            //         let jsonItem = JSON.parse(itemsInCart);
-            //         let prodInCart = this.getAttribute("data-product-incart");
-            //         console.log(prodInCart);
-            //         for (var k = 0; Object.values(jsonItem).length; k++){
-            //             console.log(Object.values(jsonItem)[k].inCart);
-            //             if (Object.values(jsonItem)[k].inCart >= 1){
-                            
-            //                 // localStorage.setItem('productsInCart', Object.values(jsonItem)[k].inCart -= 1);
-            //                 // localStorage.setItem('totalCost', cartCost - (Object.values(jsonItem)[k].inCart * Object.values(jsonItem)[k].price));
-            //                 localStorage.setItem('cartNumbers', cartNum -Object.values(jsonItem)[k].inCart);
-            //                 displayCart(country);
-                            
-            //             }
-            //         }
-            //     })
-            // }
+                btnMinusQuant[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    let prodId = this.getAttribute("data-quant-id");
+                    for (var k = 0; Object.values(jsonItem).length; k++){
+                        if (prodId == Object.values(jsonItem)[k].id){
+                            console.log(jsonItem[prodId].inCart);
+                            jsonItem[prodId].inCart -= 1;
+                            localStorage.setItem('totalCost', cartCost - jsonItem[prodId].price);
+                            localStorage.setItem('cartNumbers', cartNum -=1);
+                            if (jsonItem[prodId].inCart == 0){
+                                delete jsonItem[prodId];
+                            }
+                            localStorage.setItem('productsInCart', JSON.stringify(jsonItem));
+                            if (localStorage.getItem('cartNumbers') == 0){
+                                localStorage.clear();
+                            }
+                            displayCart(country);
+                            break;
+                        }
+                    }
+                })
+            }
             
-            // var btnPlusQuant = document.getElementsByClassName('right-quant');
+            var btnPlusQuant = document.getElementsByClassName('right-quant');
             
-            // for (var i = 0; i < btnMinusQuant.length; i++){
+            for (var i = 0; i < btnMinusQuant.length; i++){
             
-            //     btnPlusQuant[i].addEventListener('click', function(){
-            //         console.log("test3");
-            //     })
-            // }
+                btnPlusQuant[i].addEventListener('click', function(){
+                    let itemsInCart = localStorage.getItem('productsInCart');
+                    let jsonItem = JSON.parse(itemsInCart);
+                    let prodId = this.getAttribute("data-quant-id");
+                    for (var k = 0; Object.values(jsonItem).length; k++){
+                        if (prodId == Object.values(jsonItem)[k].id){
+                            console.log(jsonItem[prodId].inCart);
+                            jsonItem[prodId].inCart += 1;
+                            cartCost = parseFloat(cartCost); 
+                            localStorage.setItem('totalCost', cartCost += jsonItem[prodId].price);
+                            cartNum = parseInt(cartNum);
+                            localStorage.setItem('cartNumbers', cartNum += 1);
+                            localStorage.setItem('productsInCart', JSON.stringify(jsonItem));
+                            displayCart(country);
+                            break;
+                        }
+                    }
+                })
+            }
+
+
             $('#clear-cart').click(function(){
                 localStorage.clear();
                 window.location.href = 'cart.html';
